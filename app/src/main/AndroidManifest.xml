@@ -10,8 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Capstona_a"
-        android:name=".CMatchData_a">
+        android:theme="@style/Theme.Capstona_a">
         <activity android:name=".IngameActivity"></activity>
         <activity android:name=".UserPhaseActivity" />
         <activity android:name=".MainActivity">

@@ -8,11 +8,21 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class CMatch {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /*
-    @SerializedName("platformId")
-    @Expose
-    private String platformId;
-     */
+        @SerializedName("platformId")
+        @Expose
+        private String platformId;
+         */
     @SerializedName("gameId")
     @Expose
     private Long gameId;

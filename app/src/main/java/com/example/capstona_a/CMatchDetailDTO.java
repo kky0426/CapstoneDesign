@@ -7,6 +7,17 @@ import java.io.Serializable;
 import java.util.List;
 
 public class CMatchDetailDTO implements Serializable {
+
+    @Expose
+    private int playernum;
+    public int getPlayernum() {
+        return playernum;
+    }
+
+    public void setPlayernum(int playernum) {
+        this.playernum = playernum;
+    }
+
     @SerializedName("gameId")
     @Expose
     private Long gameId;
@@ -216,6 +227,16 @@ public class CMatchDetailDTO implements Serializable {
     public CMatchDetailDTO withParticipants(List<CParticipant> participants) {
         this.participants = participants;
         return this;
+    }
+    public void Activateplayernum(String SummonerName){
+        for(int i=0; i<10; i++)
+        {
+            if(this.getParticipantIdentities().get(i).getPlayer().getSummonerName().equals(SummonerName))
+            {
+                this.playernum=i;
+            }
+        }
+
     }
 
 }

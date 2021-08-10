@@ -86,7 +86,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/Item1"/>
+                            android:id="@+id/Item0"/>
 
                     </LinearLayout>
                     <LinearLayout
@@ -95,7 +95,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/Item2"/>
+                            android:id="@+id/Item3"/>
 
                     </LinearLayout>
 
@@ -112,7 +112,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/Item3"/>
+                            android:id="@+id/Item1"/>
 
                     </LinearLayout>
                     <LinearLayout
@@ -139,7 +139,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/Item5"/>
+                            android:id="@+id/Item2"/>
 
                     </LinearLayout>
                     <LinearLayout
@@ -148,7 +148,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/Item6"/>
+                            android:id="@+id/Item5"/>
 
                     </LinearLayout>
 

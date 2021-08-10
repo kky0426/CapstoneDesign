@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,13 +41,15 @@ public class UserPhaseActivity extends AppCompatActivity {
         ImageView img_summoner = (ImageView)findViewById(R.id.img_summoner);
         ImageView img_Tier=(ImageView)findViewById(R.id.img_Tier);
         String api_key="RGAPI-d98dcf8f-04bb-4516-a455-0f302548115e";
-        CMatchData_a matchdatalist=(CMatchData_a)getApplication();
         textView_nameSummoner.setText(User.getName());
         String profileimgSrc = "https://ddragon.leagueoflegends.com/cdn/11.15.1/img/profileicon/"+String.valueOf(User.getProfileIconId())+".png";
         Glide.with(this).load(profileimgSrc).into(img_summoner);
         ListView listView = (ListView)findViewById(R.id.listview_user_phase);
         Call<Set<CuserLeagueEntryDTO>>res1=RetroBuild.getInstance().getService().getleaguev4(User.getId(),api_key);
-        ArrayList<CMatch> CMatchArrayList = new ArrayList<CMatch>();
+        ArrayList<CMatch> matchlist=new ArrayList<CMatch>();
+
+        CMatchDetailDtoGroup dtoGroup= new CMatchDetailDtoGroup();
+
         res1.enqueue(new Callback<Set<CuserLeagueEntryDTO>>() {
             @Override
             public void onResponse(Call<Set<CuserLeagueEntryDTO>> call, Response<Set<CuserLeagueEntryDTO>> response) {
@@ -60,10 +63,10 @@ public class UserPhaseActivity extends AppCompatActivity {
                 {
                     arrayList.add(k++,i);
                 }
-                String tier=ChangeTiertoKoreanandimg(arrayList.get(1).getTier(),img_Tier);
-                textView_nameTier.setText(tier+" "+arrayList.get(1).getRank());
-                textView_nameScore.setText("점수: "+arrayList.get(1).getLeaguePoints());
-                textView_Recordgame.setText("승: "+arrayList.get(1).getWins()+"  패: "+arrayList.get(1).getLosses());
+                String tier=ChangeTiertoKoreanandimg(arrayList.get(0).getTier(),img_Tier);
+                textView_nameTier.setText(tier+" "+arrayList.get(0).getRank());
+                textView_nameScore.setText("점수: "+arrayList.get(0).getLeaguePoints());
+                textView_Recordgame.setText("승: "+arrayList.get(0).getWins()+"  패: "+arrayList.get(0).getLosses());
 
 
 
@@ -78,57 +81,72 @@ public class UserPhaseActivity extends AppCompatActivity {
         });
 
         Call <CMatchData> res2 = RetroBuild.getInstance().getService().getMatchId(User.getAccountId(), api_key);
+        res2.enqueue(new Callback<CMatchData>() {
+           @Override
+           public void onResponse(Call<CMatchData> call, Response<CMatchData> response) {
+               Log.d("Retrofit CMatch success", response.toString());
+               CMatchData matchData = response.body();
+               //Toast.makeText(getApplicationContext(), CMatchData.getMatches().get(1).getLane(), Toast.LENGTH_SHORT).show();
+               for(int i=0; i<11; i++){
+                   CMatch match1 = new CMatch();
+                   match1 = matchData.getMatches().get(i);
+                   int Champcode= match1.getChampion();
+                   String Champname=changeChampionIdToName(Champcode);
+                   String champimgsrc="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+Champname+"_0.jpg";
+                   String ChampnameKR=changeEnglishToKoreanName(Champcode);
+                   match1.setImgSrc(champimgsrc);
+                   match1.setChampName(ChampnameKR);
+                   match1.setName(User.getName());
+                   matchlist.add(i,match1);
+
+               }
+               final UserPhaseAdapter userPhaseAdapter = new UserPhaseAdapter(getApplicationContext(),matchlist);
+               listView.setAdapter(userPhaseAdapter);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           }
+           @Override
+           public void onFailure(Call<CMatchData> call, Throwable t) {
+
+           }
+       });
+        /*
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                res2.enqueue(new Callback<CMatchData>() {
-                    @Override
-                    public void onResponse(Call<CMatchData> call, Response<CMatchData> response) {
-                        Log.d("Retrofit CMatch success", response.toString());
-                        CMatchData matchData = response.body();
-                        //Toast.makeText(getApplicationContext(), CMatchData.getMatches().get(1).getLane(), Toast.LENGTH_SHORT).show();
 
-
-                        for(int i=0; i<11; i++){
-                            CMatch match1 = new CMatch();
-                            match1 = matchData.getMatches().get(i);
-                            int Champcode= match1.getChampion();
-                            String Champname=changeChampionIdToName(Champcode);
-                            String champimgsrc="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+Champname+"_0.jpg";
-                            String ChampnameKR=changeEnglishToKoreanName(Champcode);
-                            match1.setImgSrc(champimgsrc);
-                            match1.setChampName(ChampnameKR);
-                            match1.setAccountId(User.getAccountId());
-                            CMatchArrayList.add(i, match1);
-
-                        }
-
-                        final UserPhaseAdapter userPhaseAdapter = new UserPhaseAdapter(getApplicationContext(), CMatchArrayList);
-                        listView.setAdapter(userPhaseAdapter);
-
-
-                        // ArrayList<CUserPrintData>UserDataList=PrintAnyway(CMatchArrayList,User);
-
-
-
-
-
-
-
-
-
-
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<CMatchData> call, Throwable t) {
-
-                    }
-                });
 
             }
         });
+
+         */
+
+
+
+
 
 
         //Toast.makeText(getApplicationContext(),matchdatalist.getCMatchlist().get(0).getChampName(), Toast.LENGTH_SHORT).show();
@@ -157,7 +175,7 @@ public class UserPhaseActivity extends AppCompatActivity {
 
 
 
-    }
+}
 
 
     String changeChampionIdToName(int champcode) // 매개변수: 챔피언 id
@@ -836,6 +854,31 @@ public class UserPhaseActivity extends AppCompatActivity {
         }
         return tier;
     }
+    void MatchDetailTask(CMatch match,String Username,String api_key) {
+        CMatchDetailDTO dto=new CMatchDetailDTO();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Call<CMatchDetailDTO> res3 = RetroMatchBuild.getInstance2().getService().getMatchDetail(match.getGameId().toString(), api_key);
+                try {
+                     CMatchDetailDTO dto = res3.execute().body();
+
+
+                } catch (IOException e) {
+                    try {
+                        Log.d("Retrofit fail", res3.execute().body().toString());
+                    } catch (IOException exception) {
+
+                    }
+
+                }
+
+            }
+        }).start();
+
+
+    }
+
 
 
 }
