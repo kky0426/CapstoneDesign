@@ -60,6 +60,16 @@ public class CMatchDetailDTO implements Serializable {
     @Expose
     private List<CParticipant> participants = null;
 
+    public String getImgSrc() {
+        return imgSrc;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    private String imgSrc;
+
     public List<CParticipantIdentity> getParticipantIdentities() {
         return participantIdentities;
     }
@@ -124,6 +134,25 @@ public class CMatchDetailDTO implements Serializable {
         this.gameDuration = gameDuration;
         return this;
     }
+    private String UserName;
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getChampname() {
+        return Champname;
+    }
+
+    public void setChampname(String champname) {
+        Champname = champname;
+    }
+
+    private String Champname;
 /*
     public Long getQueueId() {
         return queueId;

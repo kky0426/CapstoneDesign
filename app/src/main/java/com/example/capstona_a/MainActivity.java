@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         EditText editText=(EditText)findViewById(R.id.search_textbar);
         String api_key="RGAPI-d98dcf8f-04bb-4516-a455-0f302548115e";
         Intent intent = new Intent(MainActivity.this, UserPhaseActivity.class);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

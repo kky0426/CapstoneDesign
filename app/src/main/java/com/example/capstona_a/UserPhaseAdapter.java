@@ -1,6 +1,15 @@
 package com.example.capstona_a;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,18 +19,33 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserPhaseAdapter extends BaseAdapter{
+public class UserPhaseAdapter extends BaseAdapter {
+    Message msg;
     Context myContext = null;
     LayoutInflater myInflater = null;
     ArrayList<CMatch> Cmatch;
@@ -35,7 +59,17 @@ public class UserPhaseAdapter extends BaseAdapter{
     String item_3=null;
     String item_4=null;
     String item_5=null;
-    CMatchDetailDtoGroup Group = new CMatchDetailDtoGroup();
+    ImageView item0;
+    ImageView item1;
+    ImageView item2;
+    ImageView item3;
+    ImageView item4;
+    ImageView item5;
+    boolean flag;
+    final static String foldername= Environment.getExternalStorageDirectory().getAbsolutePath()+"/ItemCode";
+    final static String filename="Itemcode.txt";
+
+
     public UserPhaseAdapter(Context context, ArrayList<CMatch> data){
         myContext = context;
         Cmatch = data;
@@ -63,30 +97,116 @@ public class UserPhaseAdapter extends BaseAdapter{
         TextView champname=(TextView)view.findViewById(R.id.name_champ);
         TextView kda=(TextView)view.findViewById(R.id.record_kda);
         TextView average = (TextView)view.findViewById(R.id.record_average);
-        ImageView item0=(ImageView)view.findViewById(R.id.Item0);
-        ImageView item1=(ImageView)view.findViewById(R.id.Item1);
-        ImageView item2=(ImageView)view.findViewById(R.id.Item2);
-        ImageView item3=(ImageView)view.findViewById(R.id.Item3);
-        ImageView item4=(ImageView)view.findViewById(R.id.Item4);
-        ImageView item5=(ImageView)view.findViewById(R.id.Item5);
+        item0=(ImageView)view.findViewById(R.id.Item0);
+        item1=(ImageView)view.findViewById(R.id.Item1);
+        item2=(ImageView)view.findViewById(R.id.Item2);
+        item3=(ImageView)view.findViewById(R.id.Item3);
+        item4=(ImageView)view.findViewById(R.id.Item4);
+        item5=(ImageView)view.findViewById(R.id.Item5);
         TextView gameduration=(TextView)view.findViewById(R.id.gameDuration);
         Glide.with(imageView).load(Cmatch.get(position).getImgSrc()).into(imageView);
-        Glide.with(item0).load(Cmatch.get(position).getImgSrc()).into(item0);
+        flag=true;
         Call<CMatchDetailDTO>matchDetailDTOCall=RetroMatchBuild.getInstance2().getService().getMatchDetail(Cmatch.get(position).getGameId().toString(),api_key);
-        Thread getMatchDetail = new Thread(){
-            public void run(){
-                try{
-                    CMatchDetailDTO dto=matchDetailDTOCall.execute().body();
+        Thread GetMatchDetail = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    CMatchDetailDTO dto = matchDetailDTOCall.execute().body();
                     dto.Activateplayernum(Cmatch.get(position).getName());
-                    Log.d("playernum",String.valueOf(dto.getPlayernum()));
+                    item_0 = String.valueOf(dto.getParticipants().get(dto.getPlayernum()).getStats().getItem0());
+                    item_1 = String.valueOf(dto.getParticipants().get(dto.getPlayernum()).getStats().getItem1());
+                    item_2 = String.valueOf(dto.getParticipants().get(dto.getPlayernum()).getStats().getItem2());
+                    item_3 = String.valueOf(dto.getParticipants().get(dto.getPlayernum()).getStats().getItem3());
+                    item_4 = String.valueOf(dto.getParticipants().get(dto.getPlayernum()).getStats().getItem4());
+                    item_5 = String.valueOf(dto.getParticipants().get(dto.getPlayernum()).getStats().getItem5());
+                    int playernum = dto.getPlayernum();
+                    double kill = (double) dto.getParticipants().get(playernum).getStats().getKills();
+                    double death = (double) dto.getParticipants().get(playernum).getStats().getDeaths();
+                    double assist = (double) dto.getParticipants().get(playernum).getStats().getAssists();
+                    String k_d_a = String.valueOf((int) kill) + "/" + String.valueOf((int) death) + "/" + String.valueOf((int) assist);
+                    String aver = String.format("%.2f", (kill + assist) / death);
+                    champname.setText(Cmatch.get(position).getChampName());
+                    Log.d("timeduration", dto.getGameDuration().toString());
+                    kda.setText(k_d_a);
+                    average.setText(aver);
+                    gameduration.setText(String.valueOf(dto.getGameDuration() / 60) + "분" + String.valueOf(dto.getGameDuration() % 60) + "초");
+                    String path=getUrlfromRdrawable(R.drawable.item_6693);
+                    Log.d("g",path);
+                    ////
+                    String PATH0="https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/"+item_0+".png";
+                    URL url0 = new URL(PATH0);
+                    URLConnection conn0 = url0.openConnection();
+                    conn0.connect();
+                    InputStream stream0 = conn0.getInputStream();
+                    Bitmap bitmap0 = BitmapFactory.decodeStream(stream0);
+                    item0.setImageBitmap(bitmap0);
+                    /////
+                    ////
+                    String PATH1="https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/"+item_1+".png";
+                    URL url1 = new URL(PATH1);
+                    URLConnection conn1 = url1.openConnection();
+                    conn1.connect();
+                    InputStream stream1 = conn1.getInputStream();
+                    Bitmap bitmap1 = BitmapFactory.decodeStream(stream1);
+                    item1.setImageBitmap(bitmap1);
+                    /////
+                    ////
+                    String PATH2="https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/"+item_2+".png";
+                    URL url2 = new URL(PATH2);
+                    URLConnection conn2 = url2.openConnection();
+                    conn2.connect();
+                    InputStream stream2 = conn2.getInputStream();
+                    Bitmap bitmap2 = BitmapFactory.decodeStream(stream2);
+                    item2.setImageBitmap(bitmap2);
+                    /////
+                    ////
+                    String PATH3="https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/"+item_3+".png";
+                    URL url3 = new URL(PATH3);
+                    URLConnection conn3 = url3.openConnection();
+                    conn3.connect();
+                    InputStream stream3 = conn3.getInputStream();
+                    Bitmap bitmap3 = BitmapFactory.decodeStream(stream3);
+                    item3.setImageBitmap(bitmap3);
+                    /////
+                    ////
+                    String PATH4="https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/"+item_4+".png";
+                    URL url4 = new URL(PATH4);
+                    URLConnection conn4 = url4.openConnection();
+                    conn4.connect();
+                    InputStream stream4 = conn4.getInputStream();
+                    Bitmap bitmap4 = BitmapFactory.decodeStream(stream4);
+                    item4.setImageBitmap(bitmap4);
+                    /////
+                    ////
+                    String PATH5="https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/"+item_5+".png";
+                    URL url5 = new URL(PATH5);
+                    URLConnection conn5 = url5.openConnection();
+                    conn5.connect();
+                    InputStream stream5 = conn5.getInputStream();
+                    Bitmap bitmap5 = BitmapFactory.decodeStream(stream5);
+                    item5.setImageBitmap(bitmap5);
+                    /////
 
-                }catch (IOException e){
 
+
+
+                    }catch (IOException e){
+
+                    }
                 }
-            }
 
-        };
-        getMatchDetail.start();
+        });
+        GetMatchDetail.start();
+        try{
+            GetMatchDetail.join();
+        }catch (Exception e){
+
+        }
+
+
+
+
 
 
 
@@ -139,23 +259,20 @@ public class UserPhaseAdapter extends BaseAdapter{
         return view;
 
     }
-    int getPlayernum(CMatchDetailDTO dto,String name){
-        int playernum=0;
-        for(int i =0; i<10; i++)
-        {
-            if(dto.getParticipantIdentities().get(i).getPlayer().getSummonerName()==name){
-                playernum=i;
-                return playernum;
-            }
-        }
-        return 0;
-    }
     String getItemUrl(String itemnum)
     {
         String src="https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/"+itemnum+".png";
         return src;
     }
+    String getUrlfromRdrawable(int resId){
+        return Uri.parse("android.resource://" + R.class.getPackage().getName() + "/" + resId).toString();
+    }
+
+
+
+
 
 
 
 }
+

@@ -1,9 +1,13 @@
 package com.example.capstona_a;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +30,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserPhaseActivity extends AppCompatActivity {
-
+        RecyclerView recyclerView;
+        RecyclerView.LayoutManager layoutManager;
+        Message msg;
+        Handler han;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +44,7 @@ public class UserPhaseActivity extends AppCompatActivity {
         TextView textView_nameTier=(TextView)findViewById(R.id.textview_tier1);
         TextView textView_nameScore=(TextView)findViewById(R.id.textview_tier2);
         TextView textView_Recordgame=(TextView)findViewById(R.id.textview_Recordgame);
+        TextView textView_winningPercentage=(TextView)findViewById(R.id.textview_winningPercentage) ;
         Button btn = (Button)findViewById(R.id.btn_ingameInfo);
         ImageView img_summoner = (ImageView)findViewById(R.id.img_summoner);
         ImageView img_Tier=(ImageView)findViewById(R.id.img_Tier);
@@ -44,12 +52,10 @@ public class UserPhaseActivity extends AppCompatActivity {
         textView_nameSummoner.setText(User.getName());
         String profileimgSrc = "https://ddragon.leagueoflegends.com/cdn/11.15.1/img/profileicon/"+String.valueOf(User.getProfileIconId())+".png";
         Glide.with(this).load(profileimgSrc).into(img_summoner);
-        ListView listView = (ListView)findViewById(R.id.listview_user_phase);
+        ListView listView = findViewById(R.id.listview_user_phase);
         Call<Set<CuserLeagueEntryDTO>>res1=RetroBuild.getInstance().getService().getleaguev4(User.getId(),api_key);
         ArrayList<CMatch> matchlist=new ArrayList<CMatch>();
-
-        CMatchDetailDtoGroup dtoGroup= new CMatchDetailDtoGroup();
-
+        ArrayList<CMatchDetailDTO> dtoArrayList= new ArrayList<CMatchDetailDTO>();
         res1.enqueue(new Callback<Set<CuserLeagueEntryDTO>>() {
             @Override
             public void onResponse(Call<Set<CuserLeagueEntryDTO>> call, Response<Set<CuserLeagueEntryDTO>> response) {
@@ -67,6 +73,8 @@ public class UserPhaseActivity extends AppCompatActivity {
                 textView_nameTier.setText(tier+" "+arrayList.get(0).getRank());
                 textView_nameScore.setText("점수: "+arrayList.get(0).getLeaguePoints());
                 textView_Recordgame.setText("승: "+arrayList.get(0).getWins()+"  패: "+arrayList.get(0).getLosses());
+                float winningP= Math.round(((float)arrayList.get(0).getWins()/(float)(arrayList.get(0).getWins()+arrayList.get(0).getLosses()))*100);
+                textView_winningPercentage.setText("승률: "+ "("+winningP+"%)");
 
 
 
@@ -81,6 +89,7 @@ public class UserPhaseActivity extends AppCompatActivity {
         });
 
         Call <CMatchData> res2 = RetroBuild.getInstance().getService().getMatchId(User.getAccountId(), api_key);
+
         res2.enqueue(new Callback<CMatchData>() {
            @Override
            public void onResponse(Call<CMatchData> call, Response<CMatchData> response) {
@@ -92,41 +101,49 @@ public class UserPhaseActivity extends AppCompatActivity {
                    match1 = matchData.getMatches().get(i);
                    int Champcode= match1.getChampion();
                    String Champname=changeChampionIdToName(Champcode);
-                   String champimgsrc="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+Champname+"_0.jpg";
+                   String champimgsrc="https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/"+Champname+"_0.jpg";
                    String ChampnameKR=changeEnglishToKoreanName(Champcode);
-                   match1.setImgSrc(champimgsrc);
                    match1.setChampName(ChampnameKR);
+                   match1.setImgSrc(champimgsrc);
                    match1.setName(User.getName());
                    matchlist.add(i,match1);
 
+
+
                }
-               final UserPhaseAdapter userPhaseAdapter = new UserPhaseAdapter(getApplicationContext(),matchlist);
+               /*
+               for(int i =0; i<10; i++)
+               {
+                   int k=0;
+                   Call<CMatchDetailDTO>matchDetailDTOCall=RetroMatchBuild.getInstance2().getService().getMatchDetail(matchlist.get(i).getGameId().toString(),api_key);
+                   Thread GetMatchDetail = new Thread(new Runnable() {
+                       @Override
+                       public void run() {
+                           try{
+                               CMatchDetailDTO dto = matchDetailDTOCall.execute().body();
+                               dto.Activateplayernum(User.getName());
+                               int Champcode=dto.getParticipants().get(dto.getPlayernum()).getChampionId();
+                               String Champname=changeChampionIdToName(Champcode);
+                               String champimgsrc="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+Champname+"_0.jpg";
+                               String ChampnameKR=changeEnglishToKoreanName(Champcode);
+                               dto.
+
+                           }catch (IOException e){
+
+                           }
+
+
+                       }
+                   });
+                   k++;
+               }
+
+                */
+
+
+
+               final UserPhaseAdapter userPhaseAdapter = new UserPhaseAdapter(getApplicationContext(), matchlist);
                listView.setAdapter(userPhaseAdapter);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
            }
            @Override
            public void onFailure(Call<CMatchData> call, Throwable t) {

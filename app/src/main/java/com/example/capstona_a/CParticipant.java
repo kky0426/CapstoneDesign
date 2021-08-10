@@ -14,7 +14,7 @@ public class CParticipant implements Serializable {
     private Long teamId;
     @SerializedName("championId")
     @Expose
-    private Long championId;
+    private int championId;
     @SerializedName("spell1Id")
     @Expose
     private Long spell1Id;
@@ -55,15 +55,15 @@ public class CParticipant implements Serializable {
         return this;
     }
 
-    public Long getChampionId() {
+    public int getChampionId() {
         return championId;
     }
 
-    public void setChampionId(Long championId) {
+    public void setChampionId(int championId) {
         this.championId = championId;
     }
 
-    public CParticipant withChampionId(Long championId) {
+    public CParticipant withChampionId(int championId) {
         this.championId = championId;
         return this;
     }
