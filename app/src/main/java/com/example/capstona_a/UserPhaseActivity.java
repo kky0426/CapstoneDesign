@@ -48,7 +48,7 @@ public class UserPhaseActivity extends AppCompatActivity {
         Button btn = (Button)findViewById(R.id.btn_ingameInfo);
         ImageView img_summoner = (ImageView)findViewById(R.id.img_summoner);
         ImageView img_Tier=(ImageView)findViewById(R.id.img_Tier);
-        String api_key="RGAPI-d98dcf8f-04bb-4516-a455-0f302548115e";
+        String api_key="RGAPI-b58e4b61-0a65-48c1-8fe0-b2e675f0ac8f";
         textView_nameSummoner.setText(User.getName());
         String profileimgSrc = "https://ddragon.leagueoflegends.com/cdn/11.15.1/img/profileicon/"+String.valueOf(User.getProfileIconId())+".png";
         Glide.with(this).load(profileimgSrc).into(img_summoner);

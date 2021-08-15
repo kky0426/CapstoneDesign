@@ -49,7 +49,7 @@ public class UserPhaseAdapter extends BaseAdapter {
     Context myContext = null;
     LayoutInflater myInflater = null;
     ArrayList<CMatch> Cmatch;
-    String api_key="RGAPI-d98dcf8f-04bb-4516-a455-0f302548115e";
+    String api_key="RGAPI-b58e4b61-0a65-48c1-8fe0-b2e675f0ac8f";
     int HourDuration=0;
     int MinuteDuration=0;
     int playernum=0;
@@ -66,10 +66,6 @@ public class UserPhaseAdapter extends BaseAdapter {
     ImageView item4;
     ImageView item5;
     boolean flag;
-    final static String foldername= Environment.getExternalStorageDirectory().getAbsolutePath()+"/ItemCode";
-    final static String filename="Itemcode.txt";
-
-
     public UserPhaseAdapter(Context context, ArrayList<CMatch> data){
         myContext = context;
         Cmatch = data;
