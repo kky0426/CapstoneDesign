@@ -1,6 +1,7 @@
 package com.example.capstona_a;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -16,10 +17,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 
 import java.io.BufferedWriter;
@@ -29,7 +32,7 @@ import java.io.IOException;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
+
 
 import org.w3c.dom.Text;
 
@@ -65,6 +68,7 @@ public class UserPhaseAdapter extends BaseAdapter {
     ImageView item3;
     ImageView item4;
     ImageView item5;
+
     boolean flag;
     public UserPhaseAdapter(Context context, ArrayList<CMatch> data){
         myContext = context;
@@ -93,6 +97,8 @@ public class UserPhaseAdapter extends BaseAdapter {
         TextView champname=(TextView)view.findViewById(R.id.name_champ);
         TextView kda=(TextView)view.findViewById(R.id.record_kda);
         TextView average = (TextView)view.findViewById(R.id.record_average);
+        Button btn=(Button)view.findViewById(R.id.btn_userphase_single_detail);
+        Intent intent = new Intent(view.getContext(),UserphaseDetailActivity.class);
         item0=(ImageView)view.findViewById(R.id.Item0);
         item1=(ImageView)view.findViewById(R.id.Item1);
         item2=(ImageView)view.findViewById(R.id.Item2);
@@ -110,6 +116,7 @@ public class UserPhaseAdapter extends BaseAdapter {
 
                     CMatchDetailDTO dto = matchDetailDTOCall.execute().body();
                     dto.Activateplayernum(Cmatch.get(position).getName());
+
                     item_0 = String.valueOf(dto.getParticipants().get(dto.getPlayernum()).getStats().getItem0());
                     item_1 = String.valueOf(dto.getParticipants().get(dto.getPlayernum()).getStats().getItem1());
                     item_2 = String.valueOf(dto.getParticipants().get(dto.getPlayernum()).getStats().getItem2());
@@ -127,8 +134,6 @@ public class UserPhaseAdapter extends BaseAdapter {
                     kda.setText(k_d_a);
                     average.setText(aver);
                     gameduration.setText(String.valueOf(dto.getGameDuration() / 60) + "분" + String.valueOf(dto.getGameDuration() % 60) + "초");
-                    String path=getUrlfromRdrawable(R.drawable.item_6693);
-                    Log.d("g",path);
                     ////
                     String PATH0="https://ddragon.leagueoflegends.com/cdn/11.15.1/img/item/"+item_0+".png";
                     URL url0 = new URL(PATH0);
@@ -186,7 +191,7 @@ public class UserPhaseAdapter extends BaseAdapter {
 
 
 
-
+                    intent.putExtra("GameData",dto);
                     }catch (IOException e){
 
                     }
@@ -199,6 +204,14 @@ public class UserPhaseAdapter extends BaseAdapter {
         }catch (Exception e){
 
         }
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                view.getContext().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+            }
+        });
 
 
 
