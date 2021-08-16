@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.capstona_a">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Capstone"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Capstona_a">
-        <activity android:name=".IngameActivity"></activity>
+        android:theme="@style/Theme.Capstona_a"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".UserphaseDetailActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".IngameActivity" />
         <activity android:name=".UserPhaseActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
