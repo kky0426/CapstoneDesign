@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_userphase_detail.xml" value="0.5" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/listview_userphase_detail_single.xml" value="0.2" />
         <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.12182971014492754" />
         <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.12182971014492754" />
         <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_user_phase.xml" value="0.13043478260869565" />

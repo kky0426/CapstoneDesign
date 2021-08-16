@@ -16,7 +16,7 @@
         <activity
             android:name=".UserphaseDetailActivity"
             android:exported="true"
-            android:theme="@android:style/Theme.Dialog"/>
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".IngameActivity" />
         <activity android:name=".UserPhaseActivity" />
         <activity android:name=".MainActivity">
