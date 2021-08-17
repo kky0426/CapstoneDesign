@@ -1,9 +1,7 @@
-package com.example.capstona_a;
+package com.example.capstona_a.data;
 
 import com.google.gson.annotations.Expose;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 public class CUserSetleagueEntryDTO {

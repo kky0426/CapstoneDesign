@@ -1,6 +1,4 @@
-package com.example.capstona_a;
-
-import android.app.Application;
+package com.example.capstona_a.data;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -108,6 +106,7 @@ public class CMatch {
     private Long gameDuration;
     private List<CParticipant> participants = null;
     private List<CParticipantIdentity> participantIdentities = null;
+
     public String getChampName() {
         return ChampName;
     }
@@ -207,20 +206,20 @@ public class CMatch {
     }
     */
 
-/*
-    public String getRole() {
-        return role;
-    }
+    /*
+        public String getRole() {
+            return role;
+        }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+        public void setRole(String role) {
+            this.role = role;
+        }
 
-    public CMatch withRole(String role) {
-        this.role = role;
-        return this;
-    }
-*/
+        public CMatch withRole(String role) {
+            this.role = role;
+            return this;
+        }
+    */
     public String getLane() {
         return lane;
     }
@@ -233,24 +232,25 @@ public class CMatch {
         this.lane = lane;
         return this;
     }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(CMatch.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("gameId");
         sb.append('=');
-        sb.append(((this.gameId == null)?"<null>":this.gameId));
+        sb.append(((this.gameId == null) ? "<null>" : this.gameId));
         sb.append(',');
         sb.append("champion");
         sb.append('=');
-        sb.append(((this.champion == null)?"<null>":this.champion));
+        sb.append(((this.champion == null) ? "<null>" : this.champion));
         sb.append(',');
         sb.append("lane");
         sb.append('=');
-        sb.append(((this.lane == null)?"<null>":this.lane));
+        sb.append(((this.lane == null) ? "<null>" : this.lane));
         sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
+        if (sb.charAt((sb.length() - 1)) == ',') {
+            sb.setCharAt((sb.length() - 1), ']');
         } else {
             sb.append(']');
         }

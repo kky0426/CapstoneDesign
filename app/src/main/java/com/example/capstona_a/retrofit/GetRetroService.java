@@ -1,4 +1,8 @@
-package com.example.capstona_a;
+package com.example.capstona_a.retrofit;
+
+import com.example.capstona_a.data.CMatchData;
+import com.example.capstona_a.data.CUserDTO;
+import com.example.capstona_a.data.CuserLeagueEntryDTO;
 
 import java.util.Set;
 
@@ -14,7 +18,7 @@ public interface GetRetroService {
     Call<CUserDTO>getAcc_id(@Path("summonerName")String summonerName, @Query("api_key")String api_key);
 
     @GET("league/v4/entries/by-summoner/{encryptedSummonerId}")
-    Call<Set<CuserLeagueEntryDTO>>getleaguev4(@Path("encryptedSummonerId")String encryptedSummonerId, @Query("api_key")String api_key);
+    Call<Set<CuserLeagueEntryDTO>> getLeagueV4(@Path("encryptedSummonerId")String encryptedSummonerId, @Query("api_key")String api_key);
 
 
     @GET("match/v4/matchlists/by-account/{encryptedAccountId}")

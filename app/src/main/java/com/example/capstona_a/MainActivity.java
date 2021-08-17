@@ -1,73 +1,79 @@
 package com.example.capstona_a;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.capstona_a.data.CUserDTO;
+import com.example.capstona_a.retrofit.RetroBuild;
+
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import retrofit2.Call;
-
 public class MainActivity extends AppCompatActivity {
+
+    private Button btn;
+
+    private EditText editText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn=(Button)findViewById(R.id.btn_search);
-        EditText editText=(EditText)findViewById(R.id.search_textbar);
-        String api_key="RGAPI-b58e4b61-0a65-48c1-8fe0-b2e675f0ac8f";
-        Intent intent = new Intent(MainActivity.this, UserPhaseActivity.class);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name=editText.getText().toString();
-                Handler handler = new Handler();
-                CUserDTO CUserDTO1 = new CUserDTO();
+        // 뷰 바인딩
+        viewBinding();
 
-                Call<CUserDTO>res= RetroBuild.getInstance().getService().getAcc_id(name,api_key);
-                res.enqueue(new Callback<CUserDTO>() {
-                    @Override
-                    public void onResponse(Call<CUserDTO> call, Response<CUserDTO> response) {
-                        Log.d("Retrofit success",response.toString());
-                        CUserDTO CUserDTO1 = response.body();
-                        intent.putExtra("user", CUserDTO1);
-                        //Toast myT= Toast.makeText(getApplicationContext(),CUserDTO1.getId(),Toast.LENGTH_LONG);
-                        startActivity(intent);
+        String api_key = Util.API_KEY();
 
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<CUserDTO> call, Throwable t) {
-                        Log.d("ERROR Cuser","FAIL");
-
-                    }
-                });
-
-        /*
-        add something code ...
-         */
-
-
-
-
-
-            }
+        // 뷰에 핸들러 달기
+        btn.setOnClickListener(v -> {
+            String name = editText.getText().toString();
+            summoner(name.trim(), api_key, v);
         });
     }
 
+    private void viewBinding() {
+        btn = (Button) findViewById(R.id.btn_search);
+        editText = (EditText) findViewById(R.id.search_textbar);
+    }
 
+    private void summoner(String name, String api_key, View v) {
+        Call<CUserDTO> res = RetroBuild.getInstance().getService().getAcc_id(name, api_key);
+        res.enqueue(new Callback<CUserDTO>() {
+            @Override
+            public void onResponse(@NonNull Call<CUserDTO> call, @NonNull Response<CUserDTO> response) {
+                Log.d("MainActivity", response.toString());
+                CUserDTO CUserDTO1 = response.body();
 
+                if (CUserDTO1 == null) {
+                    // TODO 만약 해당하는 이름의 서머너가 존재 하지 않았을 경우를 처리해야함
+                    Log.d("MainActivity", "해당하는 서머너가 존재하지 않습니다  OnSuccess: " + name);
+                    if (v != null) {
+                        Toast.makeText(v.getContext(), "해당하는 서머너가 존재하지 않습니다", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Intent intent = new Intent(MainActivity.this, UserPhaseActivity.class);
+                    intent.putExtra("user", CUserDTO1);
+                    startActivity(intent);
+                }
+            }
 
-
-
-
+            @Override
+            public void onFailure(@NonNull Call<CUserDTO> call, @NonNull Throwable t) {
+                Log.d("MainActivity", "해당하는 서머너가 존재하지 않습니다 OnFailure: " + name);
+                if (v != null) {
+                    Toast.makeText(v.getContext(), "해당하는 서머너가 존재하지 않습니다", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 }

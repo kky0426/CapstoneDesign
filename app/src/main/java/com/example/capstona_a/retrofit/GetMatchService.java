@@ -1,8 +1,9 @@
-package com.example.capstona_a;
+package com.example.capstona_a.retrofit;
+
+import com.example.capstona_a.data.CMatchDetailDTO;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;

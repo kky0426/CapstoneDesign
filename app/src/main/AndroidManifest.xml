@@ -14,10 +14,10 @@
         android:theme="@style/Theme.Capstona_a"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".UserphaseDetailActivity"
+            android:name=".UserPhaseDetailActivity"
             android:exported="true"
-            android:theme="@android:style/Theme.Dialog" />
-        <activity android:name=".IngameActivity" />
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".InGameActivity" />
         <activity android:name=".UserPhaseActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

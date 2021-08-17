@@ -1,4 +1,4 @@
-package com.example.capstona_a;
+package com.example.capstona_a.data;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -10,6 +10,7 @@ public class CMatchDetailDTO implements Serializable {
 
     @Expose
     private int playernum;
+
     public int getPlayernum() {
         return playernum;
     }
@@ -95,33 +96,34 @@ public class CMatchDetailDTO implements Serializable {
         this.gameId = gameId;
         return this;
     }
-/*
-    public String getPlatformId() {
-        return platformId;
-    }
 
-    public void setPlatformId(String platformId) {
-        this.platformId = platformId;
-    }
+    /*
+        public String getPlatformId() {
+            return platformId;
+        }
 
-    public CMatchDetailDTO withPlatformId(String platformId) {
-        this.platformId = platformId;
-        return this;
-    }
+        public void setPlatformId(String platformId) {
+            this.platformId = platformId;
+        }
 
-    public Long getGameCreation() {
-        return gameCreation;
-    }
+        public CMatchDetailDTO withPlatformId(String platformId) {
+            this.platformId = platformId;
+            return this;
+        }
 
-    public void setGameCreation(Long gameCreation) {
-        this.gameCreation = gameCreation;
-    }
+        public Long getGameCreation() {
+            return gameCreation;
+        }
 
-    public CMatchDetailDTO withGameCreation(Long gameCreation) {
-        this.gameCreation = gameCreation;
-        return this;
-    }
-*/
+        public void setGameCreation(Long gameCreation) {
+            this.gameCreation = gameCreation;
+        }
+
+        public CMatchDetailDTO withGameCreation(Long gameCreation) {
+            this.gameCreation = gameCreation;
+            return this;
+        }
+    */
     public Long getGameDuration() {
         return gameDuration;
     }
@@ -134,6 +136,7 @@ public class CMatchDetailDTO implements Serializable {
         this.gameDuration = gameDuration;
         return this;
     }
+
     private String UserName;
 
     public String getUserName() {
@@ -153,85 +156,86 @@ public class CMatchDetailDTO implements Serializable {
     }
 
     private String Champname;
-/*
-    public Long getQueueId() {
-        return queueId;
-    }
 
-    public void setQueueId(Long queueId) {
-        this.queueId = queueId;
-    }
+    /*
+        public Long getQueueId() {
+            return queueId;
+        }
 
-    public CMatchDetailDTO withQueueId(Long queueId) {
-        this.queueId = queueId;
-        return this;
-    }
+        public void setQueueId(Long queueId) {
+            this.queueId = queueId;
+        }
 
-    public Long getMapId() {
-        return mapId;
-    }
+        public CMatchDetailDTO withQueueId(Long queueId) {
+            this.queueId = queueId;
+            return this;
+        }
 
-    public void setMapId(Long mapId) {
-        this.mapId = mapId;
-    }
+        public Long getMapId() {
+            return mapId;
+        }
 
-    public CMatchDetailDTO withMapId(Long mapId) {
-        this.mapId = mapId;
-        return this;
-    }
+        public void setMapId(Long mapId) {
+            this.mapId = mapId;
+        }
 
-    public Long getSeasonId() {
-        return seasonId;
-    }
+        public CMatchDetailDTO withMapId(Long mapId) {
+            this.mapId = mapId;
+            return this;
+        }
 
-    public void setSeasonId(Long seasonId) {
-        this.seasonId = seasonId;
-    }
+        public Long getSeasonId() {
+            return seasonId;
+        }
 
-    public CMatchDetailDTO withSeasonId(Long seasonId) {
-        this.seasonId = seasonId;
-        return this;
-    }
+        public void setSeasonId(Long seasonId) {
+            this.seasonId = seasonId;
+        }
 
-    public String getGameVersion() {
-        return gameVersion;
-    }
+        public CMatchDetailDTO withSeasonId(Long seasonId) {
+            this.seasonId = seasonId;
+            return this;
+        }
 
-    public void setGameVersion(String gameVersion) {
-        this.gameVersion = gameVersion;
-    }
+        public String getGameVersion() {
+            return gameVersion;
+        }
 
-    public CMatchDetailDTO withGameVersion(String gameVersion) {
-        this.gameVersion = gameVersion;
-        return this;
-    }
+        public void setGameVersion(String gameVersion) {
+            this.gameVersion = gameVersion;
+        }
 
-    public String getGameMode() {
-        return gameMode;
-    }
+        public CMatchDetailDTO withGameVersion(String gameVersion) {
+            this.gameVersion = gameVersion;
+            return this;
+        }
 
-    public void setGameMode(String gameMode) {
-        this.gameMode = gameMode;
-    }
+        public String getGameMode() {
+            return gameMode;
+        }
 
-    public CMatchDetailDTO withGameMode(String gameMode) {
-        this.gameMode = gameMode;
-        return this;
-    }
+        public void setGameMode(String gameMode) {
+            this.gameMode = gameMode;
+        }
 
-    public String getGameType() {
-        return gameType;
-    }
+        public CMatchDetailDTO withGameMode(String gameMode) {
+            this.gameMode = gameMode;
+            return this;
+        }
 
-    public void setGameType(String gameType) {
-        this.gameType = gameType;
-    }
+        public String getGameType() {
+            return gameType;
+        }
 
-    public CMatchDetailDTO withGameType(String gameType) {
-        this.gameType = gameType;
-        return this;
-    }
-*/
+        public void setGameType(String gameType) {
+            this.gameType = gameType;
+        }
+
+        public CMatchDetailDTO withGameType(String gameType) {
+            this.gameType = gameType;
+            return this;
+        }
+    */
     public List<CTeam> getTeams() {
         return teams;
     }
@@ -257,12 +261,11 @@ public class CMatchDetailDTO implements Serializable {
         this.participants = participants;
         return this;
     }
-    public void Activateplayernum(String SummonerName){
-        for(int i=0; i<10; i++)
-        {
-            if(this.getParticipantIdentities().get(i).getPlayer().getSummonerName().equals(SummonerName))
-            {
-                this.playernum=i;
+
+    public void activatePlayerNum(String SummonerName) {
+        for (int i = 0; i < 10; i++) {
+            if (this.getParticipantIdentities().get(i).getPlayer().getSummonerName().equals(SummonerName)) {
+                this.playernum = i;
             }
         }
 
