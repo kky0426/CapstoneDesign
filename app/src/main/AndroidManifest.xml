@@ -14,10 +14,9 @@
         android:theme="@style/Theme.Capstona_a"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".UserPhaseDetailActivity"
-            android:exported="true"
-            android:theme="@android:style/Theme.Dialog"/>
-        <activity android:name=".InGameActivity" />
+            android:name=".UserphaseDetailActivity"
+            android:exported="true" />
+        <activity android:name=".IngameActivity" />
         <activity android:name=".UserPhaseActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

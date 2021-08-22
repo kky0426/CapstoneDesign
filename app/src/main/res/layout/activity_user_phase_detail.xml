@@ -3,40 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    tools:context=".UserPhaseDetailActivity"
-    android:orientation="horizontal">
+    android:layout_height="600dp"
+    tools:context=".UserphaseDetailActivity"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:orientation="vertical"
         >
-        <TextView
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_blue_2"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_blue_3"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_blue_4"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_blue_5"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_blue_1"
-            android:layout_weight="1"/>
+            android:layout_height="match_parent"
+            android:id="@+id/listview_red_team"/>
 
     </LinearLayout>
     <LinearLayout
@@ -44,32 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:orientation="vertical">
-        <TextView
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_red_1"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_red_2"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_red_3"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_red_4"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/textview_red_5"
-            android:layout_weight="1"/>
-
+            android:layout_height="match_parent"
+            android:id="@+id/listview_blue_team"/>
     </LinearLayout>
 
 

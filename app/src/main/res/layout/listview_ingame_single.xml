@@ -155,7 +155,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="15dp"
                 android:ellipsize="start"
                 android:gravity="bottom"
                 android:maxLines="1"
@@ -171,13 +171,13 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="20dp"
+                android:layout_height="15dp"
                 tools:text="칸 1"
                 />
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="20dp"
+                android:layout_height="15dp"
                 tools:text="칸 2"
                 />
         </TableRow>
@@ -189,22 +189,37 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="20dp"
+                android:layout_height="15dp"
                 tools:text="칸 1"
                 />
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="20dp"
+                android:layout_height="15dp"
                 tools:text="칸 2"
                 />
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="20dp"
+                android:layout_height="15dp"
                 tools:text="칸 3"
                 />
         </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                tools:text="더 보기"
+                android:id="@+id/btn_match_record_detail"/>
+
+
+
+        </TableRow>
+
+
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

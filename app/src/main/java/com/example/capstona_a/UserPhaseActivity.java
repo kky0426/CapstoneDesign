@@ -76,7 +76,7 @@ public class UserPhaseActivity extends AppCompatActivity {
 
         // 뷰에 핸들러 달기
         btn.setOnClickListener(v -> {
-            Intent intent1 = new Intent(UserPhaseActivity.this, InGameActivity.class);
+            Intent intent1 = new Intent(UserPhaseActivity.this, IngameActivity.class);
             intent1.putExtra("user", user);
             startActivity(intent1);
         });

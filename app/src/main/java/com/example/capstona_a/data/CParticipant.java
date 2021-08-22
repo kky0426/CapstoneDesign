@@ -27,6 +27,17 @@ public class CParticipant implements Serializable {
     @SerializedName("timeline")
     @Expose
     private CTimeline timeline;
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
+
+    private String Username;
+
     private final static long serialVersionUID = -7509224404413034069L;
 
     public Long getParticipantId() {

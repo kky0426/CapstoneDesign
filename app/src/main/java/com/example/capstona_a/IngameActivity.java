@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.capstona_a.data.CUserDTO;
 
-public class InGameActivity extends AppCompatActivity {
+public class IngameActivity extends AppCompatActivity {
 
     private TextView textview3;
 

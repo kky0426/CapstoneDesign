@@ -270,5 +270,13 @@ public class CMatchDetailDTO implements Serializable {
         }
 
     }
+    public void activateUsername(){
+        for(int i=0; i<10; i++)
+        {
+            String Username=this.participantIdentities.get(i).getPlayer().getSummonerName();
+            this.participants.get(i).setUsername(Username);
+        }
+
+    }
 
 }

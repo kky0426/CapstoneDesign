@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
@@ -123,9 +124,10 @@ public class UserPhaseAdapter extends BaseAdapter {
 
             // View 핸들러 달기
             currentVH.btn.setOnClickListener(view -> {
-                Intent intent = new Intent(view.getContext(), UserPhaseDetailActivity.class);
+                Intent intent = new Intent(view.getContext(), UserphaseDetailActivity.class);
                 intent.putExtra("GameData", dtos[position]);
                 view.getContext().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
             });
             v.setVisibility(View.VISIBLE);
         } else {
@@ -147,7 +149,7 @@ public class UserPhaseAdapter extends BaseAdapter {
 
                         // View 핸들러 달기
                         currentVH.btn.setOnClickListener(view -> {
-                            Intent intent = new Intent(view.getContext(), UserPhaseDetailActivity.class);
+                            Intent intent = new Intent(view.getContext(), UserphaseDetailActivity.class);
                             intent.putExtra("GameData", dto);
                             view.getContext().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                         });

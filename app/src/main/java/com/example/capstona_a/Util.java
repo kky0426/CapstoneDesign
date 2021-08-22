@@ -11,7 +11,7 @@ public class Util {
     private static final String CHAMP_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/";
 
     protected static String API_KEY() {
-        return "RGAPI-8507f5fe-8048-4664-9526-5673f555960e";
+        return "RGAPI-9c48564b-3162-43ff-977a-b7b7dad33e9e";
     }
 
     public static String getItemImgSrc(Long item) {
