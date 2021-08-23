@@ -2,14 +2,22 @@ package com.example.capstona_a;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.capstona_a.data.CSpectatorDTO;
 import com.example.capstona_a.data.CUserDTO;
+import com.example.capstona_a.retrofit.RetroWebServerBuild;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class IngameActivity extends AppCompatActivity {
 
@@ -39,6 +47,30 @@ public class IngameActivity extends AppCompatActivity {
 
 
         String api_key = Util.API_KEY();
+
+        Call<CSpectatorDTO> res4= RetroWebServerBuild.getInstance3().getService4().getSpecdata(user.getName());
+        res4.enqueue(new Callback<CSpectatorDTO>() {
+            @Override
+            public void onResponse(Call<CSpectatorDTO> call, Response<CSpectatorDTO> response) {
+                CSpectatorDTO dto = response.body();
+                if(dto==null)
+                {
+                    Log.d("Retrofit Spserver fail", "spec data접근 불가1"+ response.message().toString());
+
+                }
+                else
+                {
+                    Log.d("Retrofit server success",response.body().toString());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CSpectatorDTO> call, Throwable t) {
+                Log.d("Retrofit Spserver fail", "spec data접근 불가"+t.toString());
+
+            }
+        });
     }
 
     private void viewBinding() {

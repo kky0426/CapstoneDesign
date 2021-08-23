@@ -1,6 +1,8 @@
 package com.example.capstona_a.retrofit;
 
 import com.example.capstona_a.data.CMatchData;
+import com.example.capstona_a.data.CSpecPlayer;
+import com.example.capstona_a.data.CSpectatorDTO;
 import com.example.capstona_a.data.CUserDTO;
 import com.example.capstona_a.data.CuserLeagueEntryDTO;
 
@@ -23,6 +25,9 @@ public interface GetRetroService {
 
     @GET("match/v4/matchlists/by-account/{encryptedAccountId}")
     Call<CMatchData>getMatchId(@Path("encryptedAccountId")String encryptedAccountId, @Query("api_key")String api_key);
+
+    @GET("lol/{summonerName}")
+    Call<CSpectatorDTO>getSpecdata(@Path("summonerName")String summonerName);
 
 
 }

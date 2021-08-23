@@ -50,7 +50,7 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View converview, ViewGroup parent)
     {
-        View view=myInflater.inflate(R.layout.listview_user_phase_detail_single,null);
+        View view=myInflater.inflate(R.layout.listview_user_phase_detail_single,parent, false);
         ImageView imagechamp=(ImageView) view.findViewById(R.id.img_userphase_Champ);
         ImageView imagespell1=(ImageView) view.findViewById(R.id.img_user_phase_detail_spell1);
         ImageView imagespell2=(ImageView) view.findViewById(R.id.img_user_phase_detail_spell2);
