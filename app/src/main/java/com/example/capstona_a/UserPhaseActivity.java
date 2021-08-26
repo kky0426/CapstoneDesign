@@ -118,11 +118,10 @@ public class UserPhaseActivity extends AppCompatActivity {
                     textView_nameTier.setText(getString(R.string.with_space_ss, tier, arrayList.get(0).getRank()));
                     textView_nameScore.setText(getString(R.string.score_before_d, arrayList.get(0).getLeaguePoints()));
                     textView_Recordgame.setText(getString(R.string.win_lose_score_dd, arrayList.get(0).getWins(), arrayList.get(0).getLosses()));
-                    float winningP = Math.round(((float) arrayList.get(0).getWins() / (arrayList.get(0).getWins() + arrayList.get(0).getLosses())) * 100);
-                    textView_winningPercentage.setText(getString(R.string.win_late_f, winningP));
+                    double winningP = (float) arrayList.get(0).getWins() / (arrayList.get(0).getWins() + arrayList.get(0).getLosses()) * 100.0;
+                    textView_winningPercentage.setText("승률: ("+String.format("%.2f",winningP)+"%)");
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<Set<CuserLeagueEntryDTO>> call, @NonNull Throwable t) {
             }
