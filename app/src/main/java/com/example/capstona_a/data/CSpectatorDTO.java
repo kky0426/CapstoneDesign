@@ -1,58 +1,71 @@
 package com.example.capstona_a.data;
 
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+import java.util.List;
 
-public class CSpectatorDTO {
-
-    @SerializedName("status")
+public class CSpectatorDTO implements Serializable {
+    @SerializedName("gameId")
     @Expose
-    private Long status;
+    private long gameId;
+    @SerializedName("mapId")
+    @Expose
+    private long mapId;
     @SerializedName("gameMode")
     @Expose
     private String gameMode;
     @SerializedName("gameType")
     @Expose
     private String gameType;
-    @SerializedName("player_1")
+    @SerializedName("gameQueueConfigId")
     @Expose
-    private CSpecPlayer player1;
-    @SerializedName("player_2")
+    private long gameQueueConfigId;
+    @SerializedName("participants")
     @Expose
-    private CSpecPlayer player2;
-    @SerializedName("player_3")
+    private List<CParticipant2> participants = null;
+    @SerializedName("observers")
     @Expose
-    private CSpecPlayer player3;
-    @SerializedName("player_4")
+    private CObservers observers;
+    @SerializedName("platformId")
     @Expose
-    private CSpecPlayer player4;
-    @SerializedName("player_5")
+    private String platformId;
+    @SerializedName("bannedChampions")
     @Expose
-    private CSpecPlayer player5;
-    @SerializedName("player_6")
+    private List<CBannedChampion> bannedChampions = null;
+    @SerializedName("gameStartTime")
     @Expose
-    private CSpecPlayer player6;
-    @SerializedName("player_7")
+    private long gameStartTime;
+    @SerializedName("gameLength")
     @Expose
-    private CSpecPlayer player7;
-    @SerializedName("player_8")
-    @Expose
-    private CSpecPlayer player8;
-    @SerializedName("player_9")
-    @Expose
-    private CSpecPlayer player9;
-    @SerializedName("player_10")
-    @Expose
-    private CSpecPlayer player10;
+    private long gameLength;
+    private final static long serialVersionUID = -51909267876354799L;
 
-    public Long getStatus() {
-        return status;
+    public long getGameId() {
+        return gameId;
     }
 
-    public void setStatus(Long status) {
-        this.status = status;
+    public void setGameId(long gameId) {
+        this.gameId = gameId;
+    }
+
+    public CSpectatorDTO withGameId(long gameId) {
+        this.gameId = gameId;
+        return this;
+    }
+
+    public long getMapId() {
+        return mapId;
+    }
+
+    public void setMapId(long mapId) {
+        this.mapId = mapId;
+    }
+
+    public CSpectatorDTO withMapId(long mapId) {
+        this.mapId = mapId;
+        return this;
     }
 
     public String getGameMode() {
@@ -63,6 +76,11 @@ public class CSpectatorDTO {
         this.gameMode = gameMode;
     }
 
+    public CSpectatorDTO withGameMode(String gameMode) {
+        this.gameMode = gameMode;
+        return this;
+    }
+
     public String getGameType() {
         return gameType;
     }
@@ -71,83 +89,100 @@ public class CSpectatorDTO {
         this.gameType = gameType;
     }
 
-    public CSpecPlayer getPlayer1() {
-        return player1;
+    public CSpectatorDTO withGameType(String gameType) {
+        this.gameType = gameType;
+        return this;
     }
 
-    public void setPlayer1(CSpecPlayer player1) {
-        this.player1 = player1;
+    public long getGameQueueConfigId() {
+        return gameQueueConfigId;
     }
 
-    public CSpecPlayer getPlayer2() {
-        return player2;
+    public void setGameQueueConfigId(long gameQueueConfigId) {
+        this.gameQueueConfigId = gameQueueConfigId;
     }
 
-    public void setPlayer2(CSpecPlayer player2) {
-        this.player2 = player2;
+    public CSpectatorDTO withGameQueueConfigId(long gameQueueConfigId) {
+        this.gameQueueConfigId = gameQueueConfigId;
+        return this;
     }
 
-    public CSpecPlayer getPlayer3() {
-        return player3;
+    public List<CParticipant2> getParticipants() {
+        return participants;
     }
 
-    public void setPlayer3(CSpecPlayer player3) {
-        this.player3 = player3;
+    public void setParticipants(List<CParticipant2> participants) {
+        this.participants = participants;
     }
 
-    public CSpecPlayer getPlayer4() {
-        return player4;
+    public CSpectatorDTO withParticipants(List<CParticipant2> participants) {
+        this.participants = participants;
+        return this;
     }
 
-    public void setPlayer4(CSpecPlayer player4) {
-        this.player4 = player4;
+    public CObservers getObservers() {
+        return observers;
     }
 
-    public CSpecPlayer getPlayer5() {
-        return player5;
+    public void setObservers(CObservers observers) {
+        this.observers = observers;
     }
 
-    public void setPlayer5(CSpecPlayer player5) {
-        this.player5 = player5;
+    public CSpectatorDTO withObservers(CObservers observers) {
+        this.observers = observers;
+        return this;
     }
 
-    public CSpecPlayer getPlayer6() {
-        return player6;
+    public String getPlatformId() {
+        return platformId;
     }
 
-    public void setPlayer6(CSpecPlayer player6) {
-        this.player6 = player6;
+    public void setPlatformId(String platformId) {
+        this.platformId = platformId;
     }
 
-    public CSpecPlayer getPlayer7() {
-        return player7;
+    public CSpectatorDTO withPlatformId(String platformId) {
+        this.platformId = platformId;
+        return this;
     }
 
-    public void setPlayer7(CSpecPlayer player7) {
-        this.player7 = player7;
+    public List<CBannedChampion> getBannedChampions() {
+        return bannedChampions;
     }
 
-    public CSpecPlayer getPlayer8() {
-        return player8;
+    public void setBannedChampions(List<CBannedChampion> bannedChampions) {
+        this.bannedChampions = bannedChampions;
     }
 
-    public void setPlayer8(CSpecPlayer player8) {
-        this.player8 = player8;
+    public CSpectatorDTO withBannedChampions(List<CBannedChampion> bannedChampions) {
+        this.bannedChampions = bannedChampions;
+        return this;
     }
 
-    public CSpecPlayer getPlayer9() {
-        return player9;
+    public long getGameStartTime() {
+        return gameStartTime;
     }
 
-    public void setPlayer9(CSpecPlayer player9) {
-        this.player9 = player9;
+    public void setGameStartTime(long gameStartTime) {
+        this.gameStartTime = gameStartTime;
     }
 
-    public CSpecPlayer getPlayer10() {
-        return player10;
+    public CSpectatorDTO withGameStartTime(long gameStartTime) {
+        this.gameStartTime = gameStartTime;
+        return this;
     }
 
-    public void setPlayer10(CSpecPlayer player10) {
-        this.player10 = player10;
+    public long getGameLength() {
+        return gameLength;
     }
+
+    public void setGameLength(long gameLength) {
+        this.gameLength = gameLength;
+    }
+
+    public CSpectatorDTO withGameLength(long gameLength) {
+        this.gameLength = gameLength;
+        return this;
+    }
+
 }
