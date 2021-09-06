@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserphaseDetailActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".UserPhaseDetailActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
         android:layout_gravity="center"
-        >
+        android:layout_weight="1"
+        android:orientation="vertical">
+
         <ListView
+            android:id="@+id/listview_red_team"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#44166592"
-            android:id="@+id/listview_red_team"/>
+            android:background="#44166592" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_gravity="center"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_gravity="center">
+        android:orientation="vertical">
+
         <ListView
+            android:id="@+id/listview_blue_team"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#4489140E"
-            android:id="@+id/listview_blue_team"/>
+            android:background="#4489140E" />
     </LinearLayout>
-
 
 </LinearLayout>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:orientation="vertical"
     tools:context=".UserPhaseActivity">
@@ -89,16 +89,16 @@
                 android:id="@+id/tv_user_phase_win_rate"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:textStyle="bold"
                 android:gravity="bottom|center_horizontal"
+                android:textStyle="bold"
                 tools:text="승률: (52.0%)" />
 
             <TextView
                 android:id="@+id/tv_record_game"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="top|center_horizontal"
                 android:autoSizeTextType="uniform"
+                android:gravity="top|center_horizontal"
                 android:maxLines="1"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
@@ -125,8 +125,8 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="8dp"
         android:text="@string/recent_game_record"
-        android:textStyle="bold"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -135,9 +135,9 @@
         <ListView
             android:id="@+id/listview_user_phase"
             android:layout_width="match_parent"
-            android:layout_height="365dp"
-            android:visibility="invisible"
+            android:layout_height="match_parent"
             android:background="@drawable/all_border"
+            android:visibility="invisible"
             tools:listitem="@layout/listview_user_phase_single"
             tools:visibility="visible" />
 

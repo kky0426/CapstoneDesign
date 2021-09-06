@@ -6,16 +6,14 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-
 import com.example.capstona_a.data.CSpectatorDTO;
 import com.example.capstona_a.data.CUserDTO;
 import com.example.capstona_a.retrofit.RetroBuild;
-
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,16 +48,16 @@ public class IngameActivity extends AppCompatActivity {
 
         String api_key = Util.API_KEY();
 
-        Call<CSpectatorDTO>res4= RetroBuild.getInstance().getService().getSpecdata(user.getId(),api_key);
+        Call<CSpectatorDTO> res4 = RetroBuild.getInstance().getService().getSpecdata(user.getId(), api_key);
         res4.enqueue(new Callback<CSpectatorDTO>() {
             @Override
-            public void onResponse(Call<CSpectatorDTO> call, Response<CSpectatorDTO> response) {
-                Log.d("retro spec success",response.toString());
+            public void onResponse(@NonNull Call<CSpectatorDTO> call, @NonNull Response<CSpectatorDTO> response) {
+                Log.d("retro spec success", response.toString());
             }
 
             @Override
-            public void onFailure(Call<CSpectatorDTO> call, Throwable t) {
-                Log.d("retro spec fail",t.toString());
+            public void onFailure(@NonNull Call<CSpectatorDTO> call, @NonNull Throwable t) {
+                Log.d("retro spec fail", t.toString());
 
             }
         });
@@ -69,9 +67,7 @@ public class IngameActivity extends AppCompatActivity {
 
     private void viewBinding() {
         textview3 = (TextView) findViewById(R.id.name_summoner_ingame);
-
         img = (ImageView) findViewById(R.id.img_ingame);
-
         listViewBlue = (ListView) findViewById(R.id.listview_ingame_blue);
         listViewRed = (ListView) findViewById(R.id.listview_ingame_red);
     }
