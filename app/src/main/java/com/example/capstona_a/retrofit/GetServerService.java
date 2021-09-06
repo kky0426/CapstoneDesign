@@ -24,6 +24,6 @@ public interface GetServerService {
     @GET("/board")
     Call<List<Board>> getBoard();
 
-    @GET("/lol/{name}")
+    @GET("/lol/ingame/{name}")
     Call<Ingame> getIngameData(@Path("name") String name);
 }

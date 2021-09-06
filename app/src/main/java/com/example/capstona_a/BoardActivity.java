@@ -48,6 +48,9 @@ public class BoardActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
                 List<Board> boards = response.body();
+                if (boards == null){
+                    return;
+                }
                 for(int i =0;i<boards.size();i++){
                     boardAdapter.addItem(boards.get(i));
                 }
