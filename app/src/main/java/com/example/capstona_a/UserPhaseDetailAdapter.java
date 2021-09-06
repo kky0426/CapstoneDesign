@@ -68,29 +68,27 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
         TextView text_tiername=(TextView) view.findViewById(R.id.text_user_phase_detail_tiername);
         TextView text_kda=(TextView) view.findViewById(R.id.text_user_phase_detail_kda);
         String champname=Util.changeChampionIdToName(data.get(position).getChampionId());
-        Glide.with(myContext).load(Util.getChampImgSrc(champname,0)).into(imagechamp);
-        if(data.get(position).getTeamId()==100)
-        {
-            view.setBackgroundColor(Color.RED);
-        }
-        else {
-            view.setBackgroundColor(Color.BLUE);
-        }
+        Glide.with(myContext).load(Util.getChampImgSrc(champname,0)).circleCrop().into(imagechamp);
+
         Long item_0 = data.get(position).getStats().getItem0();
         Long item_1 = data.get(position).getStats().getItem1();
         Long item_2 = data.get(position).getStats().getItem2();
         Long item_3 = data.get(position).getStats().getItem3();
         Long item_4 = data.get(position).getStats().getItem4();
         Long item_5 = data.get(position).getStats().getItem5();
+        Long spell_1 =data.get(position).getSpell1Id();
+        Long spell_2 =data.get(position).getSpell2Id();
         Glide.with(myContext).load(Util.getItemImgSrc(item_0)).into(imageitem0);
         Glide.with(myContext).load(Util.getItemImgSrc(item_1)).into(imageitem1);
         Glide.with(myContext).load(Util.getItemImgSrc(item_2)).into(imageitem2);
         Glide.with(myContext).load(Util.getItemImgSrc(item_3)).into(imageitem3);
         Glide.with(myContext).load(Util.getItemImgSrc(item_4)).into(imageitem4);
         Glide.with(myContext).load(Util.getItemImgSrc(item_5)).into(imageitem5);
+        Glide.with(myContext).load(Util.getSpellImgSrc(spell_1)).into(imagespell1);
+        Glide.with(myContext).load(Util.getSpellImgSrc(spell_2)).into(imagespell2);
         text_User.setText(data.get(position).getUsername());
         int cs=data.get(position).getStats().getTotalMinionsKilled().intValue();
-        text_cs.setText(String.valueOf(cs));
+        text_cs.setText(String.valueOf(cs)+"(cs)");
         text_kda.setText(data.get(position).getStats().getKills().toString()+"/"+data.get(position).getStats().getDeaths().toString()+"/"+data.get(position).getStats().getAssists().toString());
 
         return view;

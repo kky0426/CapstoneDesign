@@ -14,6 +14,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:contentDescription="@string/user_phase_single_champion_img"
+        android:layout_marginLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,6 +26,7 @@
         android:layout_width="80dp"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/img_record_champ"
         app:layout_constraintStart_toEndOf="@id/img_record_champ"
         app:layout_constraintTop_toTopOf="@id/img_record_champ"
@@ -36,6 +38,7 @@
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:gravity="center"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/tv_game_duration"
         app:layout_constraintTop_toTopOf="@id/img_record_champ"
         tools:text="13/11/11" />
@@ -45,12 +48,15 @@
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@id/img_record_champ"
         app:layout_constraintStart_toEndOf="@+id/tv_game_duration"
         tools:text="14.00" />
 
 
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="80dp"
         android:layout_height="51dp"
         app:layout_constraintBottom_toBottomOf="@id/img_record_champ"
@@ -124,10 +130,15 @@
 
     <Button
         android:id="@+id/btn_user_phase_single_detail"
-        android:layout_width="40dp"
-        android:layout_height="match_parent"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="상세 정보"
+        android:textSize="8dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tableLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

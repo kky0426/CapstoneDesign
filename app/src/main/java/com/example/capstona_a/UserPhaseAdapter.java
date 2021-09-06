@@ -181,7 +181,7 @@ public class UserPhaseAdapter extends BaseAdapter {
         String aver = myContext.getString(R.string.f_2, ((float) (kill + assist)) / death);
 
         vh.kda.setText(k_d_a);
-        vh.average.setText(aver);
+        vh.average.setText("("+aver+")");
         vh.gameDuration.setText(myContext.getString(R.string.minute_second_dd, dto.getGameDuration() / 60, dto.getGameDuration() % 60));
 
 
@@ -199,7 +199,7 @@ public class UserPhaseAdapter extends BaseAdapter {
         Glide.with(myContext).load(Util.getItemImgSrc(item_4)).into(vh.item4);
         Glide.with(myContext).load(Util.getItemImgSrc(item_5)).into(vh.item5);
 
-        Glide.with(myContext).load(cMatch.get(position).getImgSrc()).into(vh.champImg);
+        Glide.with(myContext).load(cMatch.get(position).getImgSrc()).circleCrop().into(vh.champImg);
 
     }
 }
