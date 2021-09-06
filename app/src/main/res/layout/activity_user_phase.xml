@@ -89,6 +89,7 @@
                 android:id="@+id/tv_user_phase_win_rate"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:textStyle="bold"
                 android:gravity="bottom|center_horizontal"
                 tools:text="승률: (52.0%)" />
 
@@ -96,8 +97,8 @@
                 android:id="@+id/tv_record_game"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:autoSizeTextType="uniform"
                 android:gravity="top|center_horizontal"
+                android:autoSizeTextType="uniform"
                 android:maxLines="1"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
@@ -124,6 +125,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="8dp"
         android:text="@string/recent_game_record"
+        android:textStyle="bold"
         android:textSize="20sp" />
 
     <FrameLayout
@@ -135,6 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="365dp"
             android:visibility="invisible"
+            android:background="@drawable/all_border"
             tools:listitem="@layout/listview_user_phase_single"
             tools:visibility="visible" />
 

@@ -53,6 +53,7 @@
             <TextView
                 android:layout_width="120dp"
                 android:layout_height="25dp"
+                android:textStyle="bold"
                 android:id="@+id/text_user_phase_detail_name"/>
             <LinearLayout
                 android:layout_width="120dp"
@@ -76,13 +77,15 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
+                android:gravity="center"
                 android:id="@+id/text_user_phase_detail_kda"
-                android:textSize="10dp"/>
+                android:textSize="15dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
+                android:gravity="center"
                 android:id="@+id/text_user_phase_detail_cs"
-                android:textSize="10dp"/>
+                android:textSize="15dp"/>
 
         </LinearLayout>
         <TableLayout
