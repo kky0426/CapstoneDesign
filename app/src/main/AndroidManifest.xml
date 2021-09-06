@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Capstona_a"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".BoardActivity"
+            android:exported="true" />
+        <activity
             android:name=".UserphaseDetailActivity"
             android:exported="true" />
         <activity android:name=".IngameActivity" />
