@@ -3,8 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="..\:/Users/USER/StudioProjects/Capstone_design/app/src/main/res/drawable/main_background.xml" value="0.1175925925925926" />
         <entry key="..\:/Users/USER/StudioProjects/Capstone_design/app/src/main/res/layout/activity_main.xml" value="0.1" />
+
+
+        <entry key="..\:/Android/Projects/CapstoneDesign/app/src/main/res/layout/activity_board.xml" value="0.1" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_user_phase.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_user_phase_detail.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/listview_ingame_single.xml" value="0.2046875" />
+
         <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.12182971014492754" />
         <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.12182971014492754" />
         <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_user_phase.xml" value="0.13043478260869565" />
@@ -15,7 +25,7 @@
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14_PREVIEW" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

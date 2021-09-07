@@ -45,8 +45,6 @@ public class UserPhaseActivity extends AppCompatActivity {
 
     private final ArrayList<CMatch> matchList = new ArrayList<>();
 
-    private final String CHAMP_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/";
-
     private final int MATCH_LENGTH = 11;
 //    private final String LATEST_VERSION = "11.16.1";
 
@@ -118,7 +116,7 @@ public class UserPhaseActivity extends AppCompatActivity {
                     textView_nameTier.setText(getString(R.string.with_space_ss, tier, arrayList.get(0).getRank()));
                     textView_nameScore.setText(getString(R.string.score_before_d, arrayList.get(0).getLeaguePoints()));
                     textView_Recordgame.setText(getString(R.string.win_lose_score_dd, arrayList.get(0).getWins(), arrayList.get(0).getLosses()));
-                    float winningP = Math.round(((float) arrayList.get(0).getWins() / (arrayList.get(0).getWins() + arrayList.get(0).getLosses())) * 100);
+                    double winningP = (float) arrayList.get(0).getWins() / (arrayList.get(0).getWins() + arrayList.get(0).getLosses()) * 100.0;
                     textView_winningPercentage.setText(getString(R.string.win_late_f, winningP));
                 }
             }
