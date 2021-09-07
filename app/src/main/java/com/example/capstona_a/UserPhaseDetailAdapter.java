@@ -58,6 +58,7 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
 
 
         String champName = Util.changeChampionIdToName(data.get(position).getChampionId());
+        // TODO 0 없으니까 주의
         Glide.with(myContext).load(Util.getChampImgSrc(champName, 0)).circleCrop().into(NowVH.imageChamp);
         Long item_0 = data.get(position).getStats().getItem0();
         Long item_1 = data.get(position).getStats().getItem1();
@@ -84,7 +85,9 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
     }
 
     private void glideItemImgSet(Context context, ImageView view, Long item) {
-        Glide.with(context).load(Util.getItemImgSrc(item)).into(view);
+        if (item != 0) {
+            Glide.with(context).load(Util.getItemImgSrc(item)).into(view);
+        }
     }
 
     private void viewBind(View convertView, UserPhaseDetailAdapterViewHolder VH) {
