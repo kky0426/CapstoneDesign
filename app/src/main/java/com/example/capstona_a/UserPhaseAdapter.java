@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
@@ -124,7 +123,7 @@ public class UserPhaseAdapter extends BaseAdapter {
 
             // View 핸들러 달기
             currentVH.btn.setOnClickListener(view -> {
-                Intent intent = new Intent(view.getContext(), UserphaseDetailActivity.class);
+                Intent intent = new Intent(view.getContext(), UserPhaseDetailActivity.class);
                 intent.putExtra("GameData", dtos[position]);
                 view.getContext().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
@@ -135,7 +134,7 @@ public class UserPhaseAdapter extends BaseAdapter {
             matchDetailDTOCall.enqueue(new Callback<CMatchDetailDTO>() {
                 @Override
                 public void onResponse(@NonNull Call<CMatchDetailDTO> call, @NonNull Response<CMatchDetailDTO> response) {
-                    Log.d("UserPhaseAdapter", response.toString());
+                    Log.d("UserPhaseAdapter123123", response.toString());
                     CMatchDetailDTO dto = response.body();
 
                     if (dto == null) {
@@ -149,7 +148,7 @@ public class UserPhaseAdapter extends BaseAdapter {
 
                         // View 핸들러 달기
                         currentVH.btn.setOnClickListener(view -> {
-                            Intent intent = new Intent(view.getContext(), UserphaseDetailActivity.class);
+                            Intent intent = new Intent(view.getContext(), UserPhaseDetailActivity.class);
                             intent.putExtra("GameData", dto);
                             view.getContext().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                         });
@@ -181,7 +180,7 @@ public class UserPhaseAdapter extends BaseAdapter {
         String aver = myContext.getString(R.string.f_2, ((float) (kill + assist)) / death);
 
         vh.kda.setText(k_d_a);
-        vh.average.setText("("+aver+")");
+        vh.average.setText(myContext.getString(R.string.string_with_bracket, aver));
         vh.gameDuration.setText(myContext.getString(R.string.minute_second_dd, dto.getGameDuration() / 60, dto.getGameDuration() % 60));
 
 
@@ -191,16 +190,25 @@ public class UserPhaseAdapter extends BaseAdapter {
         Long item_3 = dto.getParticipants().get(dto.getPlayernum()).getStats().getItem3();
         Long item_4 = dto.getParticipants().get(dto.getPlayernum()).getStats().getItem4();
         Long item_5 = dto.getParticipants().get(dto.getPlayernum()).getStats().getItem5();
-
-        Glide.with(myContext).load(Util.getItemImgSrc(item_0)).into(vh.item0);
-        Glide.with(myContext).load(Util.getItemImgSrc(item_1)).into(vh.item1);
-        Glide.with(myContext).load(Util.getItemImgSrc(item_2)).into(vh.item2);
-        Glide.with(myContext).load(Util.getItemImgSrc(item_3)).into(vh.item3);
-        Glide.with(myContext).load(Util.getItemImgSrc(item_4)).into(vh.item4);
-        Glide.with(myContext).load(Util.getItemImgSrc(item_5)).into(vh.item5);
-
+        if (item_0 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_0)).into(vh.item0);
+        }
+        if (item_1 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_1)).into(vh.item1);
+        }
+        if (item_2 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_2)).into(vh.item2);
+        }
+        if (item_3 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_3)).into(vh.item3);
+        }
+        if (item_4 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_4)).into(vh.item4);
+        }
+        if (item_5 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_5)).into(vh.item5);
+        }
         Glide.with(myContext).load(cMatch.get(position).getImgSrc()).circleCrop().into(vh.champImg);
-
     }
 }
 

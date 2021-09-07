@@ -10,6 +10,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
+        android:contentDescription="@string/summoner_spell"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,13 +36,15 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="3dp"
+                android:contentDescription="@string/summoner_spell"
                 tools:src="@drawable/summoner_flash" />
 
             <ImageView
                 android:id="@+id/img_ingame_spell2"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                tools:src="@drawable/summoner_haste" />
+                android:contentDescription="@string/summoner_spell"
+                tools:src="@drawable/summoner_flash" />
         </TableRow>
 
         <TableRow
@@ -54,12 +57,14 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="3dp"
+                android:contentDescription="@string/summoner_spell"
                 tools:src="@drawable/rune_8000" />
 
             <ImageView
                 android:id="@+id/img_ingame_rune2"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:contentDescription="@string/summoner_spell"
                 tools:src="@drawable/rune_8400" />
         </TableRow>
     </TableLayout>
@@ -83,6 +88,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
+        android:contentDescription="@string/summoner_spell"
         app:layout_constraintBottom_toBottomOf="@+id/table_ingame"
         app:layout_constraintStart_toEndOf="@+id/table_ingame"
         tools:src="@drawable/emblem_gold" />
@@ -170,51 +176,51 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="15dp"
-                tools:text="칸 1"
-                />
+                android:layout_weight="1"
+                tools:text="칸 1" />
+
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="15dp"
-                tools:text="칸 2"
-                />
+                android:layout_weight="1"
+                tools:text="칸 2" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
+
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="15dp"
-                tools:text="칸 1"
-                />
+                android:layout_weight="1"
+                tools:text="칸 1" />
+
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="15dp"
-                tools:text="칸 2"
-                />
+                android:layout_weight="1"
+                tools:text="칸 2" />
+
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="15dp"
-                tools:text="칸 3"
-                />
+                android:layout_weight="1"
+                tools:text="칸 3" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">
+
             <Button
+                android:id="@+id/btn_match_record_detail"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
-                tools:text="더 보기"
-                android:id="@+id/btn_match_record_detail"/>
-
+                tools:text="더 보기" />
 
 
         </TableRow>

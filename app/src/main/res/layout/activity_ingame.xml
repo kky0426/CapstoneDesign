@@ -50,8 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/compare_ingame_stats"
-        android:textStyle="bold"
-        android:textSize="11sp" />
+        android:textSize="11sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/listview_ingame_blue"
@@ -71,56 +71,56 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.5"
+            android:background="@drawable/right_border"
             android:gravity="center"
             android:text="@string/champion"
             android:textColor="#D0CCC5"
             android:textSize="11sp"
-            android:textStyle="bold"
-            android:background="@drawable/right_border"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1.5"
             android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:background="@drawable/right_border"
             android:gravity="center"
             android:text="@string/spell"
             android:textColor="#D0CCC5"
             android:textSize="11sp"
-            android:textStyle="bold"
-            android:background="@drawable/right_border"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3.6"
+            android:background="@drawable/right_border"
             android:gravity="center"
             android:text="@string/name_and_tier"
             android:textColor="#D0CCC5"
             android:textSize="11sp"
-            android:textStyle="bold"
-            android:background="@drawable/right_border"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1.5"
             android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:background="@drawable/right_border"
             android:gravity="center"
             android:text="@string/win_rate"
             android:textColor="#D0CCC5"
             android:textSize="11sp"
-            android:textStyle="bold"
-            android:background="@drawable/right_border"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="3"
             android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/right_border"
             android:gravity="center"
             android:text="@string/etc"
             android:textColor="#D0CCC5"
             android:textSize="11sp"
-            android:textStyle="bold"
-            android:background="@drawable/right_border"/>
+            android:textStyle="bold" />
         <!--        <TextView-->
         <!--            android:layout_weight="1"-->
         <!--            android:layout_width="0dp"-->
