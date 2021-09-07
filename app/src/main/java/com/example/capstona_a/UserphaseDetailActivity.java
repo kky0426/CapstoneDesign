@@ -11,7 +11,7 @@ import com.example.capstona_a.data.CParticipant;
 
 import java.util.ArrayList;
 
-public class UserphaseDetailActivity extends AppCompatActivity {
+class UserphaseDetailActivity extends AppCompatActivity {
 
     public static Long win;
 
@@ -28,9 +28,9 @@ public class UserphaseDetailActivity extends AppCompatActivity {
         ArrayList<CParticipant> Blueparticipants = new ArrayList<>();
         ListView Red = (ListView) findViewById(R.id.listview_red_team);
         ListView Blue = (ListView) findViewById(R.id.listview_blue_team);
+        int k = 0;
+        int j = 0;
         for (int i = 0; i < 10; i++) {
-            int k = 0;
-            int j = 0;
             if (dto.getParticipants().get(i).getTeamId() == 100) {
                 Redparticipants.add(j, dto.getParticipants().get(i));
                 j++;
