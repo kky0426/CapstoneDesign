@@ -1,7 +1,6 @@
 package com.example.capstona_a;
 
 import android.content.Intent;
-import android.icu.text.SymbolTable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -58,37 +57,35 @@ public class IngameActivity extends AppCompatActivity {
         Log.d("start", String.valueOf(System.currentTimeMillis()));
         result.enqueue(new Callback<Ingame>() {
             @Override
-            public void onResponse(Call<Ingame> call, Response<Ingame> response) {
-                Log.d("server : ",response.body().toString());
-
+            public void onResponse(@NonNull Call<Ingame> call, @NonNull Response<Ingame> response) {
+                assert response.body() != null;
+                Log.d("server : ", response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<Ingame> call, Throwable t) {
-                Log.d("server : ",t.toString());
+            public void onFailure(@NonNull Call<Ingame> call, @NonNull Throwable t) {
+                Log.d("server : ", t.toString());
 
-        Call<CSpectatorDTO> res4 = RetroBuild.getInstance().getService().getSpecdata(user.getId(), api_key);
-        res4.enqueue(new Callback<CSpectatorDTO>() {
-            @Override
-            public void onResponse(@NonNull Call<CSpectatorDTO> call, @NonNull Response<CSpectatorDTO> response) {
-                Log.d("retro spec success", response.toString());
-            }
+                Call<CSpectatorDTO> res4 = RetroBuild.getInstance().getService().getSpecdata(user.getId(), api_key);
+                res4.enqueue(new Callback<CSpectatorDTO>() {
+                    @Override
+                    public void onResponse(@NonNull Call<CSpectatorDTO> call, @NonNull Response<CSpectatorDTO> response) {
+                        Log.d("retro spec success", response.toString());
+                    }
 
-            @Override
-            public void onFailure(@NonNull Call<CSpectatorDTO> call, @NonNull Throwable t) {
-                Log.d("retro spec fail", t.toString());
-
-
+                    @Override
+                    public void onFailure(@NonNull Call<CSpectatorDTO> call, @NonNull Throwable t) {
+                        Log.d("retro spec fail", t.toString());
+                    }
+                });
             }
         });
-
-
     }
 
     private void viewBinding() {
-        textview3 = (TextView) findViewById(R.id.name_summoner_ingame);
-        img = (ImageView) findViewById(R.id.img_ingame);
-        listViewBlue = (ListView) findViewById(R.id.listview_ingame_blue);
-        listViewRed = (ListView) findViewById(R.id.listview_ingame_red);
+        textview3 = findViewById(R.id.name_summoner_ingame);
+        img = findViewById(R.id.img_ingame);
+        listViewBlue = findViewById(R.id.listview_ingame_blue);
+        listViewRed = findViewById(R.id.listview_ingame_red);
     }
 }

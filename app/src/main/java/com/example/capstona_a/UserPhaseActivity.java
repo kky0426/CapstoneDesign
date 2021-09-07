@@ -32,7 +32,7 @@ public class UserPhaseActivity extends AppCompatActivity {
     private TextView textView_nameSummoner;
     private TextView textView_nameTier;
     private TextView textView_nameScore;
-    private TextView textView_Recordgame;
+    private TextView textView_RecordGame;
     private TextView textView_winningPercentage;
 
     private Button btn;
@@ -81,17 +81,17 @@ public class UserPhaseActivity extends AppCompatActivity {
     }
 
     private void viewBinding() {
-        textView_nameSummoner = (TextView) findViewById(R.id.tv_name_summoner);
-        textView_nameTier = (TextView) findViewById(R.id.tv_tier1);
-        textView_nameScore = (TextView) findViewById(R.id.tv_tier2);
-        textView_Recordgame = (TextView) findViewById(R.id.tv_record_game);
-        textView_winningPercentage = (TextView) findViewById(R.id.tv_user_phase_win_rate);
+        textView_nameSummoner = findViewById(R.id.tv_name_summoner);
+        textView_nameTier = findViewById(R.id.tv_tier1);
+        textView_nameScore = findViewById(R.id.tv_tier2);
+        textView_RecordGame = findViewById(R.id.tv_record_game);
+        textView_winningPercentage = findViewById(R.id.tv_user_phase_win_rate);
 
-        btn = (Button) findViewById(R.id.btn_ingame_info);
+        btn = findViewById(R.id.btn_ingame_info);
 
-        img_summoner = (ImageView) findViewById(R.id.img_summoner);
-        img_Tier = (ImageView) findViewById(R.id.img_tier);
-        img_loading = (ImageView) findViewById(R.id.img_user_phase_loading);
+        img_summoner = findViewById(R.id.img_summoner);
+        img_Tier = findViewById(R.id.img_tier);
+        img_loading = findViewById(R.id.img_user_phase_loading);
 
         listView = findViewById(R.id.listview_user_phase);
     }
@@ -115,7 +115,7 @@ public class UserPhaseActivity extends AppCompatActivity {
                     String tier = Util.changeTierToKoreanAndSetImg(arrayList.get(0).getTier(), img_Tier);
                     textView_nameTier.setText(getString(R.string.with_space_ss, tier, arrayList.get(0).getRank()));
                     textView_nameScore.setText(getString(R.string.score_before_d, arrayList.get(0).getLeaguePoints()));
-                    textView_Recordgame.setText(getString(R.string.win_lose_score_dd, arrayList.get(0).getWins(), arrayList.get(0).getLosses()));
+                    textView_RecordGame.setText(getString(R.string.win_lose_score_dd, arrayList.get(0).getWins(), arrayList.get(0).getLosses()));
                     double winningP = (float) arrayList.get(0).getWins() / (arrayList.get(0).getWins() + arrayList.get(0).getLosses()) * 100.0;
                     textView_winningPercentage.setText(getString(R.string.win_late_f, winningP));
                 }

@@ -40,19 +40,16 @@ public class MainActivity extends AppCompatActivity {
             summoner(name.trim(), api_key, v);
         });
 
-        board_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,BoardActivity.class);
-                startActivity(intent);
-            }
+        board_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, BoardActivity.class);
+            startActivity(intent);
         });
     }
 
     private void viewBinding() {
-        btn = (Button) findViewById(R.id.btn_search);
-        editText = (EditText) findViewById(R.id.search_textbar);
-        board_btn = (Button) findViewById(R.id.board_btn);
+        btn = findViewById(R.id.btn_search);
+        editText = findViewById(R.id.search_textbar);
+        board_btn = findViewById(R.id.board_btn);
     }
 
     private void summoner(String name, String api_key, View v) {

@@ -18,9 +18,6 @@
             android:name=".BoardActivity"
             android:exported="true" />
         <activity
-            android:name=".UserphaseDetailActivity"
-            android:exported="true" />
-
             android:name=".UserPhaseDetailActivity"
             android:exported="false" />
 

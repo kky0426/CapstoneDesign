@@ -6,16 +6,18 @@ public class Util {
 
     private static final String VERSION = "11.15.1";
 
-    private static final String ITEM_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/"+VERSION+"/img/item/";
-    private static final String PROFILE_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/"+VERSION+"/img/profileicon/";
+    private static final String ITEM_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/" + VERSION + "/img/item/";
+    private static final String PROFILE_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/" + VERSION + "/img/profileicon/";
     private static final String CHAMP_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/";
-    private static final String SPELL_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/"+VERSION+"/img/spell/";
+    private static final String SPELL_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/" + VERSION + "/img/spell/";
 
     protected static String API_KEY() {
         return "RGAPI-df6e0fe8-e1d7-49ed-9f0c-b14a10fc50f1";
     }
 
-    public static String getSpellImgSrc(Long spell) { return SPELL_IMG_URL + spell + ".png"; }
+    public static String getSpellImgSrc(Long spell) {
+        return SPELL_IMG_URL + spell + ".png";
+    }
 
     public static String getItemImgSrc(Long item) {
         return ITEM_IMG_URL + item + ".png";

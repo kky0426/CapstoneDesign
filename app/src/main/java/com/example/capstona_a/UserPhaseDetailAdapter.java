@@ -1,7 +1,6 @@
 package com.example.capstona_a;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,21 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.capstona_a.data.CMatchDetailDTO;
 import com.example.capstona_a.data.CParticipant;
-import com.example.capstona_a.retrofit.RetroMatchBuild;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class UserPhaseDetailAdapter extends BaseAdapter {
     private final Context myContext;
@@ -78,10 +67,10 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
         Long item_5 = data.get(position).getStats().getItem5();
         Long spell_1 = data.get(position).getSpell1Id();
         Long spell_2 = data.get(position).getSpell2Id();
-        Long[] ListimageSrc={item_0,item_1,item_2,item_3,item_4,item_5,spell_1,spell_2};
-        ImageView[] ListitemimageView={NowVH.imageitem0, NowVH.imageitem1, NowVH.imageitem2, NowVH.imageitem3, NowVH.imageitem3, NowVH.imageitem4, NowVH.imageitem5};
-        for(int i =0; i<ListimageSrc.length-1;i++){
-            GlideitemimgSet(myContext,ListitemimageView[i],ListimageSrc[i]);
+        Long[] ListimageSrc = {item_0, item_1, item_2, item_3, item_4, item_5, spell_1, spell_2};
+        ImageView[] ListitemimageView = {NowVH.imageitem0, NowVH.imageitem1, NowVH.imageitem2, NowVH.imageitem3, NowVH.imageitem3, NowVH.imageitem4, NowVH.imageitem5};
+        for (int i = 0; i < ListimageSrc.length - 1; i++) {
+            GlideitemimgSet(myContext, ListitemimageView[i], ListimageSrc[i]);
         }
         NowVH.text_User.setText(data.get(position).getUsername());
         int cs = data.get(position).getStats().getTotalMinionsKilled().intValue();
@@ -89,20 +78,17 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
         NowVH.text_kda.setText(data.get(position).getStats().getKills().toString() + "/" + data.get(position).getStats().getDeaths().toString() + "/" + data.get(position).getStats().getAssists().toString());
 
 
-
         return convertView;
 
 
-
-
-
-
     }
-    private void GlideitemimgSet(Context context,ImageView view,Long item){
+
+    private void GlideitemimgSet(Context context, ImageView view, Long item) {
         Glide.with(context).load(Util.getItemImgSrc(item)).into(view);
     }
-    private void viewBind(View converView, UserPhaseDetailAdapterViewHolder VH){
-        VH.imagechamp=converView.findViewById(R.id.img_userphase_Champ);
+
+    private void viewBind(View converView, UserPhaseDetailAdapterViewHolder VH) {
+        VH.imagechamp = converView.findViewById(R.id.img_userphase_Champ);
         VH.imagespell1 = converView.findViewById(R.id.img_user_phase_detail_spell1);
         VH.imagespell2 = converView.findViewById(R.id.img_user_phase_detail_spell2);
         VH.imagerune1 = converView.findViewById(R.id.img_user_phase_detail_rune1);
@@ -123,7 +109,8 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
     }
 
 }
-class   UserPhaseDetailAdapterViewHolder{
+
+class UserPhaseDetailAdapterViewHolder {
     ImageView imagechamp;
     ImageView imagespell1;
     ImageView imagespell2;
