@@ -21,7 +21,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private Button btn;
-
+    private Button board_btn;
     private EditText editText;
 
     @Override
@@ -39,11 +39,20 @@ public class MainActivity extends AppCompatActivity {
             String name = editText.getText().toString();
             summoner(name.trim(), api_key, v);
         });
+
+        board_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,BoardActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void viewBinding() {
         btn = (Button) findViewById(R.id.btn_search);
         editText = (EditText) findViewById(R.id.search_textbar);
+        board_btn = (Button) findViewById(R.id.board_btn);
     }
 
     private void summoner(String name, String api_key, View v) {
