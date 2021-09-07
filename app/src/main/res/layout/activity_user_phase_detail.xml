@@ -6,32 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".UserphaseDetailActivity"
     android:orientation="vertical">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="4"
         android:orientation="vertical"
+        android:background="@drawable/all_border"
         android:layout_gravity="center"
         >
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#44166592"
-            android:id="@+id/listview_red_team"/>
-
+            android:id="@+id/listview_blue_team"/>
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="승리팀"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:id="@+id/textview_winteam" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="KDA 비교"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:background="#44166592"
+                android:id="@+id/KDA_Blue_team" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:background="#4489140E"
+                android:id="@+id/KDA_red_team" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/textview_firstblood"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:id="@+id/textview_firsttower" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
         android:orientation="vertical"
         android:layout_gravity="center">
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#4489140E"
-            android:id="@+id/listview_blue_team"/>
+            android:id="@+id/listview_red_team"/>
     </LinearLayout>
+
+
+
+
+
 
 
 </LinearLayout>

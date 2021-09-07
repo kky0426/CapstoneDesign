@@ -989,11 +989,11 @@ public class Util {
                 view.setImageResource(R.drawable.emblem_diamond);
                 break;
             case "마스터":
-                tier = "iron.png";
+                tier = "마스터";
                 view.setImageResource(R.drawable.emblem_master);
                 break;
             case "그랜드마스터":
-                tier = "grandmaster.png";
+                tier = "그랜드마스터";
                 view.setImageResource(R.drawable.emblem_grandmaster);
                 break;
             case "CHALLENGER":
@@ -1004,4 +1004,64 @@ public class Util {
         return tier;
     }
 
+    public static void SetSpellImg(long spell, ImageView view) {
+
+        switch ((int) spell) {
+            case 21:
+                view.setImageResource(R.drawable.summonerbarrier);
+                break;
+            case 1:
+                view.setImageResource(R.drawable.summonerboost);
+                break;
+            case 14:
+                view.setImageResource(R.drawable.summonerdot);
+                break;
+            case 3:
+                view.setImageResource(R.drawable.summonerexhaust);
+                break;
+            case 4:
+                view.setImageResource(R.drawable.summonerflash);
+                break;
+            case 6:
+                view.setImageResource(R.drawable.summonerhaste);
+                break;
+            case 7:
+                view.setImageResource(R.drawable.summonerheal);
+                break;
+            case 13:
+                view.setImageResource(R.drawable.summonermana);
+                break;
+            case 20:
+                view.setImageResource(R.drawable.summonersnowurfsnowball_mark);
+                break;
+            case 11:
+                view.setImageResource(R.drawable.summonersmite);
+                break;
+            case 12:
+                view.setImageResource(R.drawable.summonerteleport);
+                break;
+        }
+    }
+
+    public static void SetRuneImg(long rune, ImageView view) {
+
+        switch ((int) rune) {
+            case 8100:
+                view.setImageResource(R.drawable.domination_7200);
+                break;
+            case 8000:
+                view.setImageResource(R.drawable.precision_7201);
+                break;
+            case 8200:
+                view.setImageResource(R.drawable.sorcery_7202);
+                break;
+            case 8300:
+                view.setImageResource(R.drawable.whimsy_7203);
+                break;
+            case 8400:
+                view.setImageResource(R.drawable.resolve_7204);
+                break;
+
+        }
+    }
 }

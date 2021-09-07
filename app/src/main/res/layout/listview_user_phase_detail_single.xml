@@ -54,6 +54,7 @@
                 android:layout_width="120dp"
                 android:layout_height="25dp"
                 android:textStyle="bold"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/text_user_phase_detail_name"/>
             <LinearLayout
                 android:layout_width="120dp"
@@ -103,8 +104,7 @@
                     android:id="@+id/img_user_phase_detail_Item0"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-
-                    />
+                    android:background="@drawable/all_border" />
 
                 <ImageView
                     android:id="@+id/img_user_phase_detail_Item1"
@@ -112,16 +112,14 @@
                     android:layout_height="25dp"
                     android:layout_marginStart="2dp"
                     android:layout_marginEnd="2dp"
-
-                    />
+                    android:background="@drawable/all_border"/>
 
                 <ImageView
                     android:id="@+id/img_user_phase_detail_Item2"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-
-                    android:contentDescription="@string/user_phase_item_img"
-                    />
+                    android:background="@drawable/all_border"
+                    android:contentDescription="@string/user_phase_item_img" />
             </TableRow>
 
             <TableRow
@@ -132,9 +130,8 @@
                     android:id="@+id/img_user_phase_detail_Item3"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-
-                    android:contentDescription="@string/user_phase_item_img"
-                   />
+                    android:background="@drawable/all_border"
+                    android:contentDescription="@string/user_phase_item_img" />
 
                 <ImageView
                     android:id="@+id/img_user_phase_detail_Item4"
@@ -142,15 +139,14 @@
                     android:layout_height="25dp"
                     android:layout_marginStart="2dp"
                     android:layout_marginEnd="2dp"
-
-                    android:contentDescription="@string/user_phase_item_img"
-                    />
+                    android:background="@drawable/all_border"
+                    android:contentDescription="@string/user_phase_item_img" />
 
                 <ImageView
                     android:id="@+id/img_user_phase_detail_Item5"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:background="#DBB1FF"
+                    android:background="@drawable/all_border"
                     android:contentDescription="@string/user_phase_item_img" />
 
             </TableRow>
