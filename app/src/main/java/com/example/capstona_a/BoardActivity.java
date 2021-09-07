@@ -2,7 +2,6 @@ package com.example.capstona_a;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -77,7 +76,7 @@ public class BoardActivity extends AppCompatActivity {
                 Call<String> res = service.postBoard(data);
                 res.enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+                    public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                         finish();
                         overridePendingTransition(0, 0);
                         Intent intent = getIntent();
@@ -86,7 +85,7 @@ public class BoardActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
 
                     }
                 });

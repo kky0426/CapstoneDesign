@@ -11,7 +11,7 @@ import com.example.capstona_a.data.CParticipant;
 
 import java.util.ArrayList;
 
-class UserPhaseDetailActivity extends AppCompatActivity {
+public class UserPhaseDetailActivity extends AppCompatActivity {
 
     public static Long win;
 
@@ -24,26 +24,26 @@ class UserPhaseDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         CMatchDetailDTO dto = (CMatchDetailDTO) intent.getSerializableExtra("GameData");
         dto.activateUsername();
-        ArrayList<CParticipant> Redparticipants = new ArrayList<>();
-        ArrayList<CParticipant> Blueparticipants = new ArrayList<>();
-        ListView Red = (ListView) findViewById(R.id.listview_red_team);
-        ListView Blue = (ListView) findViewById(R.id.listview_blue_team);
+        ArrayList<CParticipant> redParticipants = new ArrayList<>();
+        ArrayList<CParticipant> blueParticipants = new ArrayList<>();
+        ListView Red = findViewById(R.id.listview_red_team);
+        ListView Blue = findViewById(R.id.listview_blue_team);
         int k = 0;
         int j = 0;
         for (int i = 0; i < 10; i++) {
             if (dto.getParticipants().get(i).getTeamId() == 100) {
-                Redparticipants.add(j, dto.getParticipants().get(i));
+                redParticipants.add(j, dto.getParticipants().get(i));
                 j++;
             } else {
-                Blueparticipants.add(k, dto.getParticipants().get(i));
+                blueParticipants.add(k, dto.getParticipants().get(i));
                 k++;
             }
 
         }
-        final UserPhaseDetailAdapter ReddetailAdapter = new UserPhaseDetailAdapter(getApplicationContext(), Redparticipants);
-        final UserPhaseDetailAdapter BluedetailAdapter = new UserPhaseDetailAdapter(getApplicationContext(), Blueparticipants);
-        Red.setAdapter(ReddetailAdapter);
-        Blue.setAdapter(BluedetailAdapter);
+        final UserPhaseDetailAdapter redDetailAdapter = new UserPhaseDetailAdapter(getApplicationContext(), redParticipants);
+        final UserPhaseDetailAdapter blueDetailAdapter = new UserPhaseDetailAdapter(getApplicationContext(), blueParticipants);
+        Red.setAdapter(redDetailAdapter);
+        Blue.setAdapter(blueDetailAdapter);
 
 
     }

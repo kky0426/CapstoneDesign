@@ -14,13 +14,9 @@
         android:theme="@style/Theme.Capstona_a"
         android:usesCleartextTraffic="true">
         <activity
-
             android:name=".BoardActivity"
             android:exported="true" />
-        <activity
-            android:name=".UserPhaseDetailActivity"
-            android:exported="false" />
-
+        <activity android:name=".UserPhaseDetailActivity" />
         <activity android:name=".IngameActivity" />
         <activity android:name=".UserPhaseActivity" />
         <activity
