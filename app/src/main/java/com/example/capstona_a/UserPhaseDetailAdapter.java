@@ -68,21 +68,28 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
         Long item_5 = data.get(position).getStats().getItem5();
         Long spell_1 = data.get(position).getSpell1Id();
         Long spell_2 = data.get(position).getSpell2Id();
-        Long[] listImageSrc = {item_0, item_1, item_2, item_3, item_4, item_5, spell_1, spell_2};
+        Long rune_1=data.get(position).getStats().getPerkPrimaryStyle();
+        Long rune_2=data.get(position).getStats().getPerkSubStyle();
+        Long[] listImageSrc = {item_0, item_1, item_2, item_3, item_4, item_5};
         ImageView[] listItemImageView = {NowVH.imageItem0, NowVH.imageItem1, NowVH.imageItem2, NowVH.imageItem3, NowVH.imageItem3, NowVH.imageItem4, NowVH.imageItem5};
         for (int i = 0; i < listImageSrc.length - 1; i++) {
             glideItemImgSet(myContext, listItemImageView[i], listImageSrc[i]);
         }
+
+        Util.SetSpellImg(spell_1, NowVH.imageSpell1);
+        Util.SetSpellImg(spell_2, NowVH.imageSpell2);
+        Util.SetRuneImg(rune_1, NowVH.imageRune1);
+        Util.SetRuneImg(rune_2, NowVH.imageRune2);
         NowVH.text_User.setText(data.get(position).getUsername());
         int cs = data.get(position).getStats().getTotalMinionsKilled().intValue();
         NowVH.text_cs.setText(cs + "(cs)");
         NowVH.text_kda.setText(data.get(position).getStats().getKills().toString() + "/" + data.get(position).getStats().getDeaths().toString() + "/" + data.get(position).getStats().getAssists().toString());
 
-
         return cv;
 
 
     }
+
 
     private void glideItemImgSet(Context context, ImageView view, Long item) {
         if (item != 0) {

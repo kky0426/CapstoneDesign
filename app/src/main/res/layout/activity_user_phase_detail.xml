@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserphaseDetailActivity"
+    tools:context=".UserPhaseDetailActivity"
     android:orientation="vertical">
 
 
@@ -42,13 +42,16 @@
                 android:layout_height="0dp"
                 android:gravity="center"
                 android:text="승리팀"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:background="@drawable/all_border_ff" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="0dp"
                 android:gravity="center"
-                android:id="@+id/textview_winteam" />
+                android:background="@drawable/all_border_ff"
+                android:id="@+id/textview_winteam"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -58,25 +61,28 @@
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
+                android:layout_weight="1.5"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="KDA (Avg)"
+                android:textStyle="bold"
+                android:background="@drawable/all_border_ff" />
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="0dp"
                 android:gravity="center"
-                android:text="KDA 비교"
+                android:background="@drawable/all_border_ff"
+                android:id="@+id/KDA_blue_team"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="0dp"
                 android:gravity="center"
-                android:background="#44166592"
-                android:id="@+id/KDA_Blue_team" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="0dp"
-                android:gravity="center"
-                android:background="#4489140E"
-                android:id="@+id/KDA_red_team" />
+                android:background="@drawable/all_border_ff"
+                android:id="@+id/KDA_red_team"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -90,12 +96,15 @@
                 android:layout_height="0dp"
                 android:gravity="center"
                 android:textStyle="bold"
+                android:background="@drawable/all_border_ff"
                 android:id="@+id/textview_firstblood"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="0dp"
                 android:gravity="center"
+                android:textStyle="bold"
+                android:background="@drawable/all_border_ff"
                 android:id="@+id/textview_firsttower" />
         </LinearLayout>
     </LinearLayout>

@@ -72,7 +72,7 @@
                 android:id="@+id/Item0"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="#DBB1FF"
+                android:background="@drawable/all_border_ff"
                 android:contentDescription="@string/user_phase_item_img"
                 tools:src="@drawable/item_1001" />
 
@@ -82,7 +82,7 @@
                 android:layout_height="25dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
-                android:background="#DBB1FF"
+                android:background="@drawable/all_border_ff"
                 android:contentDescription="@string/user_phase_item_img"
                 tools:src="@drawable/item_1001" />
 
@@ -90,7 +90,7 @@
                 android:id="@+id/Item2"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="#DBB1FF"
+                android:background="@drawable/all_border_ff"
                 android:contentDescription="@string/user_phase_item_img"
                 tools:src="@drawable/item_1001" />
         </TableRow>
@@ -103,7 +103,7 @@
                 android:id="@+id/Item3"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="#DBB1FF"
+                android:background="@drawable/all_border_ff"
                 android:contentDescription="@string/user_phase_item_img"
                 tools:src="@drawable/item_1001" />
 
@@ -113,7 +113,7 @@
                 android:layout_height="25dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
-                android:background="#DBB1FF"
+                android:background="@drawable/all_border_ff"
                 android:contentDescription="@string/user_phase_item_img"
                 tools:src="@drawable/item_1001" />
 
@@ -121,7 +121,7 @@
                 android:id="@+id/Item5"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="#DBB1FF"
+                android:background="@drawable/all_border_ff"
                 android:contentDescription="@string/user_phase_item_img" />
 
         </TableRow>

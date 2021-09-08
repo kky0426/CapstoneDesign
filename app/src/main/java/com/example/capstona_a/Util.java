@@ -990,11 +990,11 @@ public class Util {
                 tier = "다이아몬드";
                 view.setImageResource(R.drawable.emblem_diamond);
                 break;
-            case "마스터":
+            case "MASTER":
                 tier = "마스터";
                 view.setImageResource(R.drawable.emblem_master);
                 break;
-            case "그랜드마스터":
+            case "GRANDMASTER":
                 tier = "그랜드마스터";
                 view.setImageResource(R.drawable.emblem_grandmaster);
                 break;
