@@ -23,7 +23,7 @@ public class RetroServerBuild {
             .build();
 
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://ec2-18-222-187-16.us-east-2.compute.amazonaws.com:5000/")
+            .baseUrl("http://ec2-13-124-165-64.ap-northeast-2.compute.amazonaws.com:5000/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build();

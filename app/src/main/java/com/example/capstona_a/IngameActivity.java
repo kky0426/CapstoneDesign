@@ -83,6 +83,7 @@ public class IngameActivity extends AppCompatActivity {
     }
 
     private void viewBinding() {
+
         textview3 = findViewById(R.id.name_summoner_ingame);
         img = findViewById(R.id.img_ingame);
         listViewBlue = findViewById(R.id.listview_ingame_blue);
