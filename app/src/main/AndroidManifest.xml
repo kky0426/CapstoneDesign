@@ -14,6 +14,10 @@
         android:theme="@style/Theme.Capstona_a"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".IngameRateActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog"
+            android:exported="true" />
+        <activity
             android:name=".BoardActivity"
             android:exported="true" />
         <activity android:name=".UserPhaseDetailActivity" />

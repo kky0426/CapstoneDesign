@@ -40,13 +40,25 @@
                 android:hint="내용"/>
         </LinearLayout>
 
-
-        <Button
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="작성"
-            android:id="@+id/write_btn"/>
+            android:layout_weight="1.5"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="인증"
+                android:id="@+id/certify_btn"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="작성"
+                android:id="@+id/write_btn"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 </LinearLayout>

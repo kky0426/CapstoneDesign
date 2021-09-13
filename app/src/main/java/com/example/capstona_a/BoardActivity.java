@@ -2,6 +2,7 @@ package com.example.capstona_a;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,7 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.capstona_a.data.Board;
+import com.example.capstona_a.data.CUserDTO;
+import com.example.capstona_a.data.CuserLeagueEntryDTO;
 import com.example.capstona_a.retrofit.GetServerService;
+import com.example.capstona_a.retrofit.RetroBuild;
 import com.example.capstona_a.retrofit.RetroServerBuild;
 
 import java.util.HashMap;
@@ -39,7 +43,7 @@ public class BoardActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         boardAdapter = new BoardAdapter();
-
+        String api_key=Util.API_KEY();
         GetServerService service = RetroServerBuild.getInstance().getService();
         Call<List<Board>> result = service.getBoard();
         result.enqueue(new Callback<List<Board>>() {
@@ -62,6 +66,37 @@ public class BoardActivity extends AppCompatActivity {
         });
 
         Button writingBtn = findViewById(R.id.write_btn);
+        Button certifyBt = findViewById(R.id.certify_btn);
+        writingBtn.setEnabled(false);
+        certifyBt.setOnClickListener(v -> {
+            name=findViewById(R.id.write_name);
+            String name_= name.getText().toString();
+            Call<CUserDTO> resboard= RetroBuild.getInstance().getService().getAcc_id(name_,api_key);
+            resboard.enqueue(new Callback<CUserDTO>() {
+                @Override
+                public void onResponse(Call<CUserDTO> call, Response<CUserDTO> response) {
+                    if(response.body()==null){
+                        Toast.makeText(getApplicationContext(),"해당 이름의 소환사가 없습니다",Toast.LENGTH_SHORT).show();
+
+
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"인증에 성공하였습니다",Toast.LENGTH_SHORT).show();
+                        writingBtn.setEnabled(true); // 인증성공
+
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<CUserDTO> call, Throwable t) {
+                    Log.d("그런 유저 없음","인증 다시하세요");
+                    Toast.makeText(getApplicationContext(), "해당 이름의 유저가 없습니다.", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        });
         writingBtn.setOnClickListener(v -> {
             content = findViewById(R.id.write_content);
             name = findViewById(R.id.write_name);
@@ -94,4 +129,5 @@ public class BoardActivity extends AppCompatActivity {
         });
 
     }
+
 }
