@@ -8,24 +8,45 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#AAAAAA"/>
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/board_name"
-        android:textStyle="bold"
-        android:text="소환사명"
-        android:layout_margin="5dp"
-        android:padding="5dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/board_content"
-        android:text="듀오구합니다"
-        android:layout_margin="5dp"
-        android:paddingLeft="5dp"/>
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/board_name"
+                android:textStyle="bold"
+                android:text="소환사명"
+                android:layout_margin="5dp"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/board_content"
+                android:text="듀오구합니다"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"/>
+
+        </LinearLayout>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="검색"
+            android:id="@+id/btn_board_search"/>
+
+    </LinearLayout>
+
+
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:background="#AAAAAA"/>
 
 </LinearLayout>
