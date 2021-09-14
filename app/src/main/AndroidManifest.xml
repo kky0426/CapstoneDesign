@@ -20,12 +20,13 @@
         <activity
             android:name=".IngameRateActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
         <activity
             android:name=".BoardActivity"
             android:exported="true" />
         <activity android:name=".UserPhaseDetailActivity" />
-        <activity android:name=".IngameActivity" />
+        <activity
+            android:name=".IngameActivity"/>
         <activity android:name=".UserPhaseActivity" />
         <activity
             android:name=".MainActivity"

@@ -30,6 +30,22 @@ data class Player(
     @SerializedName("accountId")
     @Expose
     private val accountId: String? = null,
+
+    @SerializedName("wins")
+    @Expose
+    private val wins: Double? = null,
+
+    @SerializedName("losses")
+    @Expose
+    private val losses: Double? = null,
+
+    @SerializedName("tier")
+    @Expose
+    private val tier: String? = null,
+
+    @SerializedName("rank")
+    @Expose
+    private val rank: String? = null,
 ) {
     fun nametoString(): String {
         return "$summonerName"
@@ -51,6 +67,18 @@ data class Player(
     }
     fun getavgStats(): AvgStats?{
         return this.avgStats;
+    }
+    fun tiertoString(): String{
+        return "$tier"
+    }
+    fun tierranktoString(): String{
+        return "$rank"
+    }
+    fun wintoint(): Double?{
+        return wins
+    }
+    fun losstoint(): Double?{
+        return losses;
     }
 
 }

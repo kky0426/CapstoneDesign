@@ -19,6 +19,7 @@ import com.example.capstona_a.data.Player;
 import com.example.capstona_a.retrofit.GetServerService;
 import com.example.capstona_a.retrofit.RetroBuild;
 import com.example.capstona_a.retrofit.RetroServerBuild;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class IngameActivity extends AppCompatActivity {
     private ListView listViewBlue;
     private ListView listViewRed;
     private Button btn_record;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,5 +131,6 @@ public class IngameActivity extends AppCompatActivity {
         img = findViewById(R.id.img_ingame);
         listViewBlue = findViewById(R.id.listview_ingame_blue);
         listViewRed = findViewById(R.id.listview_ingame_red);
+
     }
 }

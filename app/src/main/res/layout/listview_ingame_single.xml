@@ -108,8 +108,9 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
             <TextView
-                android:id="@+id/tv_ingame_total_games"
+                android:id="@+id/tv_ingame_win_losses"
                 android:layout_width="match_parent"
                 android:layout_height="27dp"
                 android:gravity="center_horizontal|bottom"

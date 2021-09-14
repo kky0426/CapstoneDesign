@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.capstona_a.data.Ingame;
 import com.example.capstona_a.data.Player;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,13 +74,19 @@ public class IngameAdapter extends BaseAdapter {
             SpellHold(CurrentVH,Mycontext,position);
             //
 
+
             //룬
             TextHold(CurrentVH,player,position);
-
+            //티어
+            TierHold(CurrentVH,position);
 
 
             return convertview;
 
+    }
+    private void TierHold(IngameViewHolder CurrentVH,int position){
+        String k = Util.changeTierToKoreanAndSetImg(player.get(position).tiertoString(), CurrentVH.ingame_tier);
+        CurrentVH.ingame_tier_name.setText(k+player.get(position).tierranktoString()); //TODO 여기 레트로핏 연동해야 될듯
     }
     private void SpellHold(IngameViewHolder CurrentVH,Context context,int position){
         int spell1=Integer.valueOf(player.get(position).Spell1toString());
@@ -93,14 +100,18 @@ public class IngameAdapter extends BaseAdapter {
 
     }
     private void TextHold(IngameViewHolder CurrentVH,List<Player>player,int position){
+        double win=(player.get(position).wintoint()/(player.get(position).wintoint()+player.get(position).losstoint()));
+        double winrate=Math.floor(win*100);
         CurrentVH.ingame_name.setText(player.get(position).nametoString());
-        //CurrentVH.ingame_tier_name.setText(player.get(position).); //TODO 여기 레트로핏 연동해야 될듯
         CurrentVH.ingame_kda.setText(player.get(position).getavgStats().KillDeathAssisttoString());
         CurrentVH.ingame_vision.setText(String.valueOf(Math.floor(player.get(position).getavgStats().getVision())));
         CurrentVH.ingame_gold.setText(String.valueOf(Math.floor(player.get(position).getavgStats().getGold())));
         CurrentVH.ingame_damage_taken.setText(String.valueOf(Math.floor(player.get(position).getavgStats().getDamageTaken())));
         CurrentVH.ingame_damage_dealt.setText(String.valueOf(Math.floor(player.get(position).getavgStats().getDamageDealt())));
         CurrentVH.ingame_exp.setText(String.valueOf(Math.floor(player.get(position).getavgStats().getExp())));
+        CurrentVH.ingame_winlosses.setText(String.valueOf(player.get(position).wintoint())+" / "+String.valueOf(player.get(position).losstoint()));
+        CurrentVH.ingame_winrate.setText(String.valueOf(winrate));
+
 
     }
 
@@ -117,6 +128,8 @@ public class IngameAdapter extends BaseAdapter {
         currentVH.ingame_gold=v.findViewById(R.id.ingame_gold);
         currentVH.ingame_exp=v.findViewById(R.id.ingame_exp);
         currentVH.ingame_vision=v.findViewById(R.id.ingame_vision);
+        currentVH.ingame_winlosses=v.findViewById(R.id.tv_ingame_win_losses);
+        currentVH.ingame_winrate=v.findViewById(R.id.tv_ingame_win_rate);
     }
 
 
@@ -139,6 +152,11 @@ class IngameViewHolder{
     TextView ingame_gold;
     TextView ingame_exp;
     TextView ingame_vision;
+    TextView ingame_winlosses;
+    TextView ingame_winrate;
+
+
+
 
 
 }
