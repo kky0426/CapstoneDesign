@@ -3,7 +3,8 @@ package com.example.capstona_a.data
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class Ingame(
+
+data class Ingame (
     @SerializedName("status")
     @Expose
     private val status: Int? = null,
@@ -19,4 +20,12 @@ data class Ingame(
     @SerializedName("players")
     @Expose
     private val players: List<Player>? = null,
-)
+    @SerializedName("predict")
+    @Expose
+    private val predict: Double? = null,
+
+) {
+    override fun toString(): String {
+        return "Ingame(predict=$predict)"
+    }
+}

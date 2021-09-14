@@ -104,6 +104,7 @@ public class UserPhaseActivity extends AppCompatActivity {
                 Log.d("Retro CUsDetail success", response.toString());
                 Set<CuserLeagueEntryDTO> leagueEntryDTO = response.body();
                 CUserSetleagueEntryDTO dto = new CUserSetleagueEntryDTO();
+                CuserLeagueEntryDTO test= new CuserLeagueEntryDTO();
                 dto.setLeagueEntryDTO(leagueEntryDTO);
                 ArrayList<CuserLeagueEntryDTO> arrayList = new ArrayList<>(dto.getLeagueEntryDTO().size());
 
@@ -112,11 +113,17 @@ public class UserPhaseActivity extends AppCompatActivity {
                     Log.d("UserPhaseActivity", "리그 V4 정보가 없습니다: " + user.getName());
                 } else {
                     arrayList.addAll(leagueEntryDTO);
-                    String tier = Util.changeTierToKoreanAndSetImg(arrayList.get(0).getTier(), img_Tier);
-                    textView_nameTier.setText(getString(R.string.with_space_ss, tier, arrayList.get(0).getRank()));
-                    textView_nameScore.setText(getString(R.string.score_before_d, arrayList.get(0).getLeaguePoints()));
-                    textView_RecordGame.setText(getString(R.string.win_lose_score_dd, arrayList.get(0).getWins(), arrayList.get(0).getLosses()));
-                    double winningP = (float) arrayList.get(0).getWins() / (arrayList.get(0).getWins() + arrayList.get(0).getLosses()) * 100.0;
+                    test = getSoloRank(arrayList);
+                    if(test==null){
+                        //TODO 예외처리 필요
+                    }
+                    Log.d("test",test.getQueueType().toString());
+
+                    String tier = Util.changeTierToKoreanAndSetImg(test.getTier(), img_Tier);
+                    textView_nameTier.setText(getString(R.string.with_space_ss, tier, test.getRank()));
+                    textView_nameScore.setText(getString(R.string.score_before_d, test.getLeaguePoints()));
+                    textView_RecordGame.setText(getString(R.string.win_lose_score_dd, test.getWins(), test.getLosses()));
+                    double winningP = (float) test.getWins() / (test.getWins() + test.getLosses()) * 100.0;
                     textView_winningPercentage.setText(getString(R.string.win_late_f, winningP));
                 }
             }
@@ -166,7 +173,23 @@ public class UserPhaseActivity extends AppCompatActivity {
             }
         });
     }
+    CuserLeagueEntryDTO getSoloRank(ArrayList<CuserLeagueEntryDTO>list){
+        int i;
+        for(i=0; i<list.size();i++) {
+            if (list.get(i).getQueueType().equals("RANKED_SOLO_5x5")) {
+                break;
 
-} //주석1
+            }
+        }
+        return list.get(i);
+    }
+
+
+
+
+}
+
+
+//주석1
 //주석2
 //주석3

@@ -3,6 +3,7 @@ package com.example.capstona_a;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.example.capstona_a.retrofit.GetServerService;
 import com.example.capstona_a.retrofit.RetroBuild;
 import com.example.capstona_a.retrofit.RetroServerBuild;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,7 +32,7 @@ public class IngameActivity extends AppCompatActivity {
 
     private ListView listViewBlue;
     private ListView listViewRed;
-
+    private Button btn_record;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +42,13 @@ public class IngameActivity extends AppCompatActivity {
         viewBinding();
 
         //
+        btn_record.setEnabled(false);
+        //
         Intent intent3 = getIntent();
         CUserDTO user = (CUserDTO) intent3.getSerializableExtra("user");
+
+        //TODO 인게임 승률 출력용
+        Intent intent4 = new Intent(this,IngameRateActivity.class);
 
         // 뷰 세팅
         textview3.setText(user.getName());
@@ -60,6 +67,10 @@ public class IngameActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<Ingame> call, @NonNull Response<Ingame> response) {
                 assert response.body() != null;
                 Log.d("server : ", response.body().toString());
+                Ingame data= response.body();
+                String rate=data.toString();
+                intent4.putExtra("data",rate);
+                btn_record.setEnabled(true);
             }
 
             @Override
@@ -80,9 +91,17 @@ public class IngameActivity extends AppCompatActivity {
                 });
             }
         });
+        btn_record.setOnClickListener(view -> {
+            startActivityForResult(intent4,1);
+
+
+
+
+        });
     }
 
     private void viewBinding() {
+        btn_record=findViewById(R.id.btn_ingame_record);
         textview3 = findViewById(R.id.name_summoner_ingame);
         img = findViewById(R.id.img_ingame);
         listViewBlue = findViewById(R.id.listview_ingame_blue);
