@@ -347,7 +347,7 @@ public class Util {
                 id = "Fiddlesticks";
                 break;
             case 31:
-                id = "ChoGath";
+                id = "Chogath";
                 break;
             case 33:
                 id = "Rammus";
@@ -490,7 +490,21 @@ public class Util {
                 id = "Samira";
                 break;
 
+            case 166:
+                id = "Akshan";
+                break;
 
+            case 526:
+                id = "Rell";
+                break;
+
+            case 234:
+                id = "Viego";
+                break;
+
+            case 887:
+                id = "Gwen";
+                break;
         }
 
 
@@ -956,6 +970,22 @@ public class Util {
                 $a = "사미라";
                 break;
 
+            case 166:
+                $a = "아크샨";
+                break;
+
+            case 526:
+                $a = "렐";
+                break;
+
+            case 234:
+                $a = "비에고";
+                break;
+
+            case 887:
+                $a = "그웬";
+                break;
+
 
         }
 
@@ -990,8 +1020,8 @@ public class Util {
                 tier = "다이아몬드";
                 view.setImageResource(R.drawable.emblem_diamond);
                 break;
-            case "Master":
-                tier = "MASTER";
+            case "MASTER":
+                tier = "마스터";
                 view.setImageResource(R.drawable.emblem_master);
                 break;
             case "GRANDMASTER":
