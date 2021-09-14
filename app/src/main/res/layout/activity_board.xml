@@ -1,43 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BoardActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".BoardActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/recycler_view"
-        android:layout_weight="5"/>
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="10"
+        tools:listitem="@layout/board_detail" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="120dp"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:layout_gravity="bottom">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="4">
+            android:layout_weight="4"
+            android:orientation="vertical">
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
                 android:id="@+id/write_name"
-                android:hint="소환사명"/>
-            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="40dp"
+                android:autofillHints="name"
+                android:backgroundTint="#66442C2E"
+                android:hint="소환사명"
+                android:inputType="text"
+                android:textColorHint="#66442C2E" />
+
+            <EditText
                 android:id="@+id/write_content"
-                android:hint="내용"/>
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:backgroundTint="#66442C2E"
+                android:hint="내용"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:textColorHint="#66442C2E" />
         </LinearLayout>
 
         <LinearLayout
@@ -45,20 +61,20 @@
             android:layout_height="match_parent"
             android:layout_weight="1.5"
             android:orientation="vertical">
+
             <Button
+                android:id="@+id/certify_btn"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="40dp"
                 android:text="인증"
-                android:id="@+id/certify_btn"/>
+                android:textStyle="bold" />
+
             <Button
+                android:id="@+id/write_btn"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="80dp"
                 android:text="작성"
-                android:id="@+id/write_btn"/>
+                android:textStyle="bold" />
         </LinearLayout>
-
-
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

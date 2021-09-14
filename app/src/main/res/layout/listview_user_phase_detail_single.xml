@@ -1,182 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="60dp">
+
+
+    <ImageView
+        android:id="@+id/img_userphase_Champ"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        tools:src="@drawable/tryndamere" />
+
+    <TableLayout
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center">
+
+        <TableRow
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="5dp">
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_spell1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                tools:src="@drawable/summonerheal" />
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_spell2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="2dp"
+                tools:src="@drawable/summoner_flash" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="5dp">
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_rune1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                tools:src="@drawable/rune_8400" />
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_rune2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="2dp"
+                tools:src="@drawable/rune_8008" />
+
+        </TableRow>
+
+
+    </TableLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp">
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/img_userphase_Champ"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp" />
-
-        <TableLayout
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center">
-
-            <TableRow
-                android:layout_width="60dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="5dp">
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_spell1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp" />
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_spell2"
-                    android:layout_width="25dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_height="25dp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="60dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="5dp">
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_rune1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    />
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_rune2"
-                    android:layout_width="25dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_height="25dp"
-                    />
-
-            </TableRow>
-
-
-        </TableLayout>
+        <TextView
+            android:id="@+id/text_user_phase_detail_name"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="5dp"
+            android:gravity="start|center_vertical"
+            android:textColor="#442B2E"
+            android:textStyle="bold"
+            tools:text="여치노다프롬이네" />
 
         <LinearLayout
             android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
+            android:layout_height="25dp">
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_tier"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
 
             <TextView
-                android:id="@+id/text_user_phase_detail_name"
-                android:layout_width="120dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="5dp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="120dp"
-                android:layout_height="25dp">
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_tier"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp" />
-
-                <TextView
-                    android:id="@+id/text_user_phase_detail_tiername"
-                    android:layout_width="95dp"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_user_phase_detail_kda"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:gravity="center"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/text_user_phase_detail_cs"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:gravity="center"
-                android:textSize="15dp" />
+                android:id="@+id/text_user_phase_detail_tiername"
+                android:layout_width="95dp"
+                android:layout_height="match_parent"
+                android:textColor="#442B2E"
+                tools:text="" />
 
         </LinearLayout>
+    </LinearLayout>
 
-        <TableLayout
-            android:layout_width="90dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp">
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginBottom="1dp">
+        <TextView
+            android:id="@+id/text_user_phase_detail_kda"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:textColor="#442B2E"
+            android:textSize="15sp"
+            tools:text="10/6/14" />
 
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_Item0"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/all_border_ff"
-                    />
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_Item1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginEnd="2dp"
-                    android:background="@drawable/all_border_ff"
-                    />
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_Item2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/all_border_ff"
-                    android:contentDescription="@string/user_phase_item_img" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="25dp">
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_Item3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/all_border_ff"
-                    android:contentDescription="@string/user_phase_item_img" />
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_Item4"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginEnd="2dp"
-                    android:background="@drawable/all_border_ff"
-                    android:contentDescription="@string/user_phase_item_img" />
-
-                <ImageView
-                    android:id="@+id/img_user_phase_detail_Item5"
-                    android:layout_width="17dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/all_border_ff"
-                    android:contentDescription="@string/user_phase_item_img" />
-
-            </TableRow>
-        </TableLayout>
-
+        <TextView
+            android:id="@+id/text_user_phase_detail_cs"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:textColor="#442B2E"
+            android:textSize="15sp"
+            tools:text="201(cs)" />
 
     </LinearLayout>
+
+    <TableLayout
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginBottom="1dp">
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_Item0"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/all_border_ff" />
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_Item1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/all_border_ff" />
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_Item2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/all_border_ff"
+                android:contentDescription="@string/user_phase_item_img" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="25dp">
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_Item3"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/all_border_ff"
+                android:contentDescription="@string/user_phase_item_img" />
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_Item4"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/all_border_ff"
+                android:contentDescription="@string/user_phase_item_img" />
+
+            <ImageView
+                android:id="@+id/img_user_phase_detail_Item5"
+                android:layout_width="17dp"
+                android:layout_height="25dp"
+                android:background="@drawable/all_border_ff"
+                android:contentDescription="@string/user_phase_item_img" />
+
+        </TableRow>
+    </TableLayout>
+
 
 </LinearLayout>
