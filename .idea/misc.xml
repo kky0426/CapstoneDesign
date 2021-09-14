@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/drawable/round_border.xml" value="0.38229166666666664" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_board.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_ingame_rate.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_not_ingame.xml" value="0.25" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_user_phase.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_user_phase_detail.xml" value="0.25" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/board_detail.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/listview_ingame_single.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/listview_user_phase_detail_single.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/listview_user_phase_single.xml" value="0.33" />
         <entry key="..\:/Android/Projects/CapstoneDesign/app/src/main/res/layout/activity_board.xml" value="0.1" />
         <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.2046875" />
         <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
@@ -13,7 +25,6 @@
         <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.2" />
         <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_ingame_rate.xml" value="0.2046875" />
         <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
-        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_not_ingame.xml" value="0.2046875" />
         <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_user_phase_detail.xml" value="0.2046875" />
         <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/board_detail.xml" value="0.2046875" />
         <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/listview_ingame_single.xml" value="0.33" />

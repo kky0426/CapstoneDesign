@@ -2,6 +2,7 @@ package com.example.capstona_a.retrofit;
 
 import com.example.capstona_a.data.Board;
 import com.example.capstona_a.data.Ingame;
+import com.example.capstona_a.data.Player;
 
 import java.util.List;
 import java.util.Map;
@@ -22,4 +23,7 @@ public interface GetServerService {
 
     @GET("/lol/ingame/{name}")
     Call<Ingame> getIngameData(@Path("name") String name);
+
+    @GET("/lol/{name}")
+    Call<Player> getKDA(@Path("name") String name);
 }

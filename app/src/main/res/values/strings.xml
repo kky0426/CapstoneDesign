@@ -20,11 +20,12 @@
 
     <string name="with_space_ss">%s %s</string>
     <string name="score_before_d">점수: %d</string>
-    <string name="win_lose_score_dd">승: %d  패: %d</string>
+    <string name="win_lose_score_dd">승: %d\n패: %d</string>
     <string name="win_late_f">승률: (%.2f%%)</string>
     <string name="f_2">%.2f</string>
     <string name="minute_second_dd">%d분 %d초</string>
     <string name="string_with_bracket">(%s)</string>
     <string name="summoner_spell">서머너 스펠</string>
     <string name="detail_info">상세 정보</string>
+    <string name="kda">%.1f/%.1f/%.1f</string>
 </resources>

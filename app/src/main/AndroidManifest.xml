@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
-        android:label="Capstone"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_launcher_lml"
+        android:label="에레멜"
+        android:roundIcon="@mipmap/ic_launcher_lml_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstona_a"
         android:usesCleartextTraffic="true">

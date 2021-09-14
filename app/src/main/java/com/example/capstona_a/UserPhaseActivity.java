@@ -18,7 +18,10 @@ import com.example.capstona_a.data.CMatchData;
 import com.example.capstona_a.data.CUserDTO;
 import com.example.capstona_a.data.CUserSetleagueEntryDTO;
 import com.example.capstona_a.data.CuserLeagueEntryDTO;
+import com.example.capstona_a.data.Player;
+import com.example.capstona_a.retrofit.GetServerService;
 import com.example.capstona_a.retrofit.RetroBuild;
+import com.example.capstona_a.retrofit.RetroServerBuild;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -34,6 +37,7 @@ public class UserPhaseActivity extends AppCompatActivity {
     private TextView textView_nameScore;
     private TextView textView_RecordGame;
     private TextView textView_winningPercentage;
+    private TextView textView_kda;
 
     private Button btn;
 
@@ -72,6 +76,9 @@ public class UserPhaseActivity extends AppCompatActivity {
         league(user, api_key);
         match(user, api_key);
 
+        //  KDA
+        kda(user.getName());
+
         // 뷰에 핸들러 달기
         btn.setOnClickListener(v -> {
             Intent intent1 = new Intent(UserPhaseActivity.this, IngameActivity.class);
@@ -86,6 +93,7 @@ public class UserPhaseActivity extends AppCompatActivity {
         textView_nameScore = findViewById(R.id.tv_tier2);
         textView_RecordGame = findViewById(R.id.tv_record_game);
         textView_winningPercentage = findViewById(R.id.tv_user_phase_win_rate);
+        textView_kda = findViewById(R.id.tv_user_phase_kill_death_assist);
 
         btn = findViewById(R.id.btn_ingame_info);
 
@@ -104,7 +112,7 @@ public class UserPhaseActivity extends AppCompatActivity {
                 Log.d("Retro CUsDetail success", response.toString());
                 Set<CuserLeagueEntryDTO> leagueEntryDTO = response.body();
                 CUserSetleagueEntryDTO dto = new CUserSetleagueEntryDTO();
-                CuserLeagueEntryDTO test= new CuserLeagueEntryDTO();
+                CuserLeagueEntryDTO test = new CuserLeagueEntryDTO();
                 dto.setLeagueEntryDTO(leagueEntryDTO);
                 ArrayList<CuserLeagueEntryDTO> arrayList = new ArrayList<>(dto.getLeagueEntryDTO().size());
 
@@ -114,10 +122,10 @@ public class UserPhaseActivity extends AppCompatActivity {
                 } else {
                     arrayList.addAll(leagueEntryDTO);
                     test = getSoloRank(arrayList);
-                    if(test==null){
+                    if (test == null) {
                         //TODO 예외처리 필요
                     }
-                    Log.d("test",test.getQueueType().toString());
+                    Log.d("test", test.getQueueType().toString());
 
                     String tier = Util.changeTierToKoreanAndSetImg(test.getTier(), img_Tier);
                     textView_nameTier.setText(getString(R.string.with_space_ss, tier, test.getRank()));
@@ -173,9 +181,10 @@ public class UserPhaseActivity extends AppCompatActivity {
             }
         });
     }
-    CuserLeagueEntryDTO getSoloRank(ArrayList<CuserLeagueEntryDTO>list){
+
+    CuserLeagueEntryDTO getSoloRank(ArrayList<CuserLeagueEntryDTO> list) {
         int i;
-        for(i=0; i<list.size();i++) {
+        for (i = 0; i < list.size(); i++) {
             if (list.get(i).getQueueType().equals("RANKED_SOLO_5x5")) {
                 break;
 
@@ -185,6 +194,35 @@ public class UserPhaseActivity extends AppCompatActivity {
     }
 
 
+    private void kda(String name) {
+        Log.d("UserPhaseActivity", name);
+        GetServerService service = RetroServerBuild.getInstance().getService();
+        Call<Player> result = service.getKDA(name);
+        Log.d("UserPhaseActivity", "시작");
+        result.enqueue(new Callback<Player>() {
+            @Override
+            public void onResponse(@NonNull Call<Player> call, @NonNull Response<Player> response) {
+                Log.d("UserPhaseActivity", "일단성공");
+//                assert response.body() != null;
+                Log.d("UserPhaseActivity", "성공");
+                Log.d("server : ", response.body().toString());
+                Player data = response.body();
+                Double k = data.getavgStats().getKills();
+                Double d = data.getavgStats().getDeaths();
+                Double a = data.getavgStats().getAssists();
+                Log.d("UserPhaseActivity", "k: "+ k + "d: " + d + "a " + a);
+
+                textView_kda.setText(getString(R.string.kda, k, d, a));
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Player> call, @NonNull Throwable t) {
+                Log.d("server : ", t.toString());
+                Log.d("UserPhaseActivity", "버그" + t.toString());
+            }
+        });
+    }
 
 
 }
