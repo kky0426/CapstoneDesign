@@ -101,7 +101,7 @@ public class UserPhaseAdapter extends BaseAdapter {
         currentVH.item5 = v.findViewById(R.id.Item5);
         currentVH.gameDuration = v.findViewById(R.id.tv_game_duration);
     }
-
+/*
     private void image(String path, ImageView imageView) {
         try {
             URL url = new URL(path);
@@ -115,7 +115,7 @@ public class UserPhaseAdapter extends BaseAdapter {
             Log.d("UserPhaseAdapter", "아이템 이미지 요청중 오류 발생" + e.getMessage());
         }
     }
-
+*/
     private void matchDetail(UserPhaseViewHolder currentVH, int position, View v) {
         if (dtos[position] != null) {
             // View 세팅

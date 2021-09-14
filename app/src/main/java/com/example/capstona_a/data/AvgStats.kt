@@ -36,4 +36,11 @@ data class AvgStats(
     @SerializedName("exp")
     @Expose
     val exp: Double? = null,
-)
+
+) {
+    fun KillDeathAssisttoString(): String {
+        return "킬:$kills  데스:$deaths 도움:$assists"
+
+    }
+}
+

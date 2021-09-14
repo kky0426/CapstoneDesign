@@ -19,7 +19,7 @@
 
     <TableLayout
         android:id="@+id/table_ingame"
-        android:layout_width="60dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@id/img_ingame_champ"
@@ -39,12 +39,7 @@
                 android:contentDescription="@string/summoner_spell"
                 tools:src="@drawable/summoner_flash" />
 
-            <ImageView
-                android:id="@+id/img_ingame_spell2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:contentDescription="@string/summoner_spell"
-                tools:src="@drawable/summoner_flash" />
+
         </TableRow>
 
         <TableRow
@@ -53,19 +48,14 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/img_ingame_rune1"
+                android:id="@+id/img_ingame_spell2"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="3dp"
                 android:contentDescription="@string/summoner_spell"
-                tools:src="@drawable/rune_8000" />
+                tools:src="@drawable/summoner_flash" />
 
-            <ImageView
-                android:id="@+id/img_ingame_rune2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:contentDescription="@string/summoner_spell"
-                tools:src="@drawable/rune_8400" />
+
         </TableRow>
     </TableLayout>
 
@@ -110,15 +100,7 @@
         app:layout_constraintStart_toEndOf="@+id/tv_ingame_name"
         app:layout_constraintTop_toTopOf="@+id/tv_ingame_name">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/pb_ingame_win_rate"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:indicatorColor="#FD9E83"
-            app:indicatorDirectionCircular="counterclockwise"
-            app:trackColor="#337D6D6A"
-            app:trackThickness="25dp"
-            tools:progress="65" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -161,6 +143,7 @@
 
             <TextView
                 android:layout_width="match_parent"
+                android:id="@+id/ingame_kda"
                 android:layout_height="15dp"
                 android:ellipsize="start"
                 android:gravity="bottom"
@@ -175,12 +158,14 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/ingame_damage_dealt"
                 android:layout_width="0dp"
                 android:layout_height="15dp"
                 android:layout_weight="1"
                 tools:text="칸 1" />
 
             <TextView
+                android:id="@+id/ingame_damage_taken"
                 android:layout_width="0dp"
                 android:layout_height="15dp"
                 android:layout_weight="1"
@@ -193,18 +178,21 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/ingame_gold"
                 android:layout_width="0dp"
                 android:layout_height="15dp"
                 android:layout_weight="1"
                 tools:text="칸 1" />
 
             <TextView
+                android:id="@+id/ingame_vision"
                 android:layout_width="0dp"
                 android:layout_height="15dp"
                 android:layout_weight="1"
                 tools:text="칸 2" />
 
             <TextView
+                android:id="@+id/ingame_exp"
                 android:layout_width="0dp"
                 android:layout_height="15dp"
                 android:layout_weight="1"

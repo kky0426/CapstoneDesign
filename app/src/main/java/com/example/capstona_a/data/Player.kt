@@ -1,5 +1,6 @@
 package com.example.capstona_a.data
 
+import android.icu.text.StringPrepParseException
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -29,4 +30,27 @@ data class Player(
     @SerializedName("accountId")
     @Expose
     private val accountId: String? = null,
-)
+) {
+    fun nametoString(): String {
+        return "$summonerName"
+    }
+    fun Spell1toString(): String{
+        return "$fstSpellId"
+    }
+    fun Spell2toString(): String{
+        return "$scnSpellId"
+    }
+    fun champIdtoString(): String{
+        return  "$championId"
+    }
+    fun avgStatstoString(): String{
+        return  "$avgStats"
+    }
+    fun accountIdtoString(): String{
+        return "$accountId"
+    }
+    fun getavgStats(): AvgStats?{
+        return this.avgStats;
+    }
+
+}

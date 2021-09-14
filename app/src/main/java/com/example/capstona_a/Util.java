@@ -4,7 +4,7 @@ import android.widget.ImageView;
 
 public class Util {
 
-    private static final String VERSION = "11.15.1";
+    private static final String VERSION = "11.18.1";
 
     private static final String ITEM_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/" + VERSION + "/img/item/";
     private static final String PROFILE_IMG_URL = "https://ddragon.leagueoflegends.com/cdn/" + VERSION + "/img/profileicon/";
@@ -15,7 +15,7 @@ public class Util {
         return "RGAPI-df6e0fe8-e1d7-49ed-9f0c-b14a10fc50f1";
     }
 
-    public static String getSpellImgSrc(Long spell) {
+    public static String getSpellImgSrc(String spell) {
         return SPELL_IMG_URL + spell + ".png";
     }
 
@@ -29,6 +29,48 @@ public class Util {
 
     public static String getChampImgSrc(String champName, int number) {
         return CHAMP_IMG_URL + champName + "_" + number + ".jpg";
+    }
+    public static String changeSpellcodetoSpellName(int spell){
+        String name=null;
+        switch(spell){
+            case 21:
+                name="SummonerBarrier";
+                break;
+            case 1:
+                name="SummonerBoost";
+                break;
+            case 14:
+                name="SummonerDot";
+                break;
+            case 3:
+                name="SummonerExhaust";
+                break;
+            case 4:
+                name="SummonerFlash";
+                break;
+            case 6:
+                name="SummonerHaste";
+                break;
+            case 7:
+                name="SummonerHeal";
+                break;
+            case 13:
+                name="SummonerMana";
+                break;
+            case 30:
+                name="SummonerPoroRecall";
+                break;
+            case 31:
+                name="SummonerPoroThrow";
+                break;
+            case 11:
+                name="SummonerSmite";
+                break;
+            case 12:
+                name="SummonerTeleport";
+                break;
+        }
+        return name;
     }
 
     public static String changeChampionIdToName(int champCode) {

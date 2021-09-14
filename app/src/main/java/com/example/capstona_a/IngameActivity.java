@@ -15,10 +15,13 @@ import com.bumptech.glide.Glide;
 import com.example.capstona_a.data.CSpectatorDTO;
 import com.example.capstona_a.data.CUserDTO;
 import com.example.capstona_a.data.Ingame;
+import com.example.capstona_a.data.Player;
 import com.example.capstona_a.retrofit.GetServerService;
 import com.example.capstona_a.retrofit.RetroBuild;
 import com.example.capstona_a.retrofit.RetroServerBuild;
 
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,6 +74,16 @@ public class IngameActivity extends AppCompatActivity {
                 String rate=data.toString();
                 intent4.putExtra("data",rate);
                 btn_record.setEnabled(true);
+                List<Player> players=data.getPlayer();
+                List<Player> blue = players.subList(0,5);
+                List<Player> red=players.subList(5,10);
+                Log.d("asd",red.toString());
+                final IngameAdapter blueAdapter = new IngameAdapter(getApplicationContext(),blue);
+                listViewBlue.setAdapter(blueAdapter);
+                final IngameAdapter redAdapter = new IngameAdapter(getApplicationContext(),red);
+                listViewRed.setAdapter(redAdapter);
+
+
             }
 
             @Override

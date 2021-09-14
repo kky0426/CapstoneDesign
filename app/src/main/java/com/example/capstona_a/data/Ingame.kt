@@ -24,8 +24,12 @@ data class Ingame (
     @Expose
     private val predict: Double? = null,
 
-) {
+)
+{
     override fun toString(): String {
         return "Ingame(predict=$predict)"
+    }
+    fun getPlayer(): List<Player>?{
+        return this.players;
     }
 }
