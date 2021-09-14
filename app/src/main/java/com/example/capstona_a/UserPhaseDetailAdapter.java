@@ -71,8 +71,8 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
         Long rune_1=data.get(position).getStats().getPerkPrimaryStyle();
         Long rune_2=data.get(position).getStats().getPerkSubStyle();
         Long[] listImageSrc = {item_0, item_1, item_2, item_3, item_4, item_5};
-        ImageView[] listItemImageView = {NowVH.imageItem0, NowVH.imageItem1, NowVH.imageItem2, NowVH.imageItem3, NowVH.imageItem3, NowVH.imageItem4, NowVH.imageItem5};
-        for (int i = 0; i < listImageSrc.length - 1; i++) {
+        ImageView[] listItemImageView = {NowVH.imageItem0, NowVH.imageItem1, NowVH.imageItem2, NowVH.imageItem3, NowVH.imageItem4, NowVH.imageItem5};
+        for (int i = 0; i < listImageSrc.length; i++) {
             glideItemImgSet(myContext, listItemImageView[i], listImageSrc[i]);
         }
 

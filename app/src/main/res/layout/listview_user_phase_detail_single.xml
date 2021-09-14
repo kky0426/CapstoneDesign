@@ -32,6 +32,7 @@
                 <ImageView
                     android:id="@+id/img_user_phase_detail_spell2"
                     android:layout_width="25dp"
+                    android:layout_marginLeft="2dp"
                     android:layout_height="25dp" />
             </TableRow>
 
@@ -49,6 +50,7 @@
                 <ImageView
                     android:id="@+id/img_user_phase_detail_rune2"
                     android:layout_width="25dp"
+                    android:layout_marginLeft="2dp"
                     android:layout_height="25dp"
                     />
 
