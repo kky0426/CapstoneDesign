@@ -69,19 +69,29 @@ public class IngameActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<Ingame> call, @NonNull Response<Ingame> response) {
                 assert response.body() != null;
+
                 Log.d("server : ", response.body().toString());
                 Ingame data= response.body();
                 String rate=data.toString();
                 intent4.putExtra("data",rate);
                 btn_record.setEnabled(true);
-                List<Player> players=data.getPlayer();
-                List<Player> blue = players.subList(0,5);
-                List<Player> red=players.subList(5,10);
-                Log.d("asd",red.toString());
-                final IngameAdapter blueAdapter = new IngameAdapter(getApplicationContext(),blue);
-                listViewBlue.setAdapter(blueAdapter);
-                final IngameAdapter redAdapter = new IngameAdapter(getApplicationContext(),red);
-                listViewRed.setAdapter(redAdapter);
+                try{
+                    List<Player> players=data.getPlayer();
+                    List<Player> blue = players.subList(0,5);
+                    List<Player> red=players.subList(5,10);
+                    Log.d("asd",red.toString());
+                    final IngameAdapter blueAdapter = new IngameAdapter(getApplicationContext(),blue);
+                    listViewBlue.setAdapter(blueAdapter);
+                    final IngameAdapter redAdapter = new IngameAdapter(getApplicationContext(),red);
+                    listViewRed.setAdapter(redAdapter);
+
+                }catch(NullPointerException e){
+                    Log.d("error","겜중이아님.");
+                    Intent intent5 = new Intent(getApplicationContext(),NotIngameActivity.class);
+                    startActivityForResult(intent5,1);
+
+                }
+
 
 
             }
