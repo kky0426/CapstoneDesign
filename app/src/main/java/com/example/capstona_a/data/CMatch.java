@@ -3,15 +3,34 @@ package com.example.capstona_a.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CMatch {
+public class CMatch implements Serializable {
     private String name;
+    private int playerNum;
+
+    public int getPlayerNum() {
+        return playerNum;
+    }
+
+    public void setPlayerNum(int playerNum) {
+        this.playerNum = playerNum;
+    }
 
     public String getName() {
         return name;
     }
 
+    public Info getInfo() {
+        return info;
+    }
+
+    public void setInfo(Info info) {
+        this.info = info;
+    }
+
+    private Info info;
     public void setName(String name) {
         this.name = name;
     }

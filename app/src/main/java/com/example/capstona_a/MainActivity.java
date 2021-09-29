@@ -11,8 +11,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.capstona_a.data.CUserAPP;
 import com.example.capstona_a.data.CUserDTO;
 import com.example.capstona_a.retrofit.RetroBuild;
+import com.example.capstona_a.retrofit.RetroV5Build;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,11 +29,12 @@ public class MainActivity extends AppCompatActivity {
     private Button btn;
     private Button board_btn;
     private EditText editText;
-
+    private final int MATCH_LENGTH = 11;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // 뷰 바인딩
         viewBinding();
@@ -51,7 +58,36 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.search_textbar);
         board_btn = findViewById(R.id.board_btn);
     }
+    private void matchlist(String puuid,String api_key,Intent intent){
+        Call<JsonArray> res4 = RetroV5Build.getInstance().getService().getMatchId(puuid, api_key);
+        res4.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                JsonArray array = response.body();
+                if (array == null) {
+                    Log.d("주석아 나가죽자~", "GOOD~");
+                } else {
+                    ArrayList<String> gameid = new ArrayList<>();
+                    for (int i = 0; i < MATCH_LENGTH; i++) {
+                        JsonElement match1 = array.get(i);
 
+                        gameid.add(match1.toString());
+                        Log.d("gameId",gameid.toString());
+
+                    }
+                    intent.putExtra("Matchlist",gameid);
+                    startActivity(intent);
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                Log.d("zzss", t.toString());
+            }
+        });
+
+    }
     private void summoner(String name, String api_key, View v) {
         Call<CUserDTO> res = RetroBuild.getInstance().getService().getAcc_id(name, api_key);
         res.enqueue(new Callback<CUserDTO>() {
@@ -69,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(MainActivity.this, UserPhaseActivity.class);
                     intent.putExtra("user", CUserDTO1);
-                    startActivity(intent);
+                    matchlist(CUserDTO1.getPuuid(),api_key,intent);
                 }
             }
 

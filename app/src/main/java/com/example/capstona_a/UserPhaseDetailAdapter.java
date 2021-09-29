@@ -11,15 +11,16 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.capstona_a.data.CParticipant;
+import com.example.capstona_a.data.Participant;
 
 import java.util.ArrayList;
 
 public class UserPhaseDetailAdapter extends BaseAdapter {
     private final Context myContext;
     private final LayoutInflater myInflater;
-    private final ArrayList<CParticipant> data;
+    private final ArrayList<Participant> data;
 
-    public UserPhaseDetailAdapter(Context context, ArrayList<CParticipant> participants) {
+    public UserPhaseDetailAdapter(Context context, ArrayList<Participant> participants) {
         myContext = context;
         data = participants;
         myInflater = LayoutInflater.from(myContext);
@@ -36,7 +37,7 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
     }
 
     @Override
-    public CParticipant getItem(int position) {
+    public Participant getItem(int position) {
         return data.get(position);
     }
 
@@ -57,19 +58,19 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
         }
 
 
-        String champName = Util.changeChampionIdToName(data.get(position).getChampionId());
+        String champName = data.get(position).getChampionName();
         // TODO 0 없으니까 주의
         Glide.with(myContext).load(Util.getChampImgSrc(champName, 0)).circleCrop().into(NowVH.imageChamp);
-        Long item_0 = data.get(position).getStats().getItem0();
-        Long item_1 = data.get(position).getStats().getItem1();
-        Long item_2 = data.get(position).getStats().getItem2();
-        Long item_3 = data.get(position).getStats().getItem3();
-        Long item_4 = data.get(position).getStats().getItem4();
-        Long item_5 = data.get(position).getStats().getItem5();
-        Long spell_1 = data.get(position).getSpell1Id();
-        Long spell_2 = data.get(position).getSpell2Id();
-        Long rune_1=data.get(position).getStats().getPerkPrimaryStyle();
-        Long rune_2=data.get(position).getStats().getPerkSubStyle();
+        Long item_0 = data.get(position).getItem0();
+        Long item_1 = data.get(position).getItem1();
+        Long item_2 = data.get(position).getItem2();
+        Long item_3 = data.get(position).getItem3();
+        Long item_4 = data.get(position).getItem4();
+        Long item_5 = data.get(position).getItem5();
+        Long spell_1 = data.get(position).getSpell1Casts();
+        Long spell_2 = data.get(position).getSpell2Casts();
+        Long rune_1=data.get(position).getSpell3Casts();
+        Long rune_2=data.get(position).getSpell4Casts();
         Long[] listImageSrc = {item_0, item_1, item_2, item_3, item_4, item_5};
         ImageView[] listItemImageView = {NowVH.imageItem0, NowVH.imageItem1, NowVH.imageItem2, NowVH.imageItem3, NowVH.imageItem4, NowVH.imageItem5};
         for (int i = 0; i < listImageSrc.length; i++) {
@@ -80,10 +81,10 @@ public class UserPhaseDetailAdapter extends BaseAdapter {
         Util.SetSpellImg(spell_2, NowVH.imageSpell2);
         Util.SetRuneImg(rune_1, NowVH.imageRune1);
         Util.SetRuneImg(rune_2, NowVH.imageRune2);
-        NowVH.text_User.setText(data.get(position).getUsername());
-        int cs = data.get(position).getStats().getTotalMinionsKilled().intValue();
+        NowVH.text_User.setText(data.get(position).getSummonerName());
+        int cs = (int) data.get(position).getTotalMinionsKilled();
         NowVH.text_cs.setText(cs + "(cs)");
-        NowVH.text_kda.setText(data.get(position).getStats().getKills().toString() + "/" + data.get(position).getStats().getDeaths().toString() + "/" + data.get(position).getStats().getAssists().toString());
+        NowVH.text_kda.setText(String.valueOf(data.get(position).getKills()) + "/" + String.valueOf(data.get(position).getDeaths()) + "/" + String.valueOf(data.get(position).getAssists()));
 
         return cv;
 

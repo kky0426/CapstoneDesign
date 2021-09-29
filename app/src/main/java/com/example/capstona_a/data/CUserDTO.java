@@ -5,15 +5,13 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 /* {
-    {
-    "id": "PwHqFCyKL4rEzeRmt-OIY3b26vYUe1hnLEyrPN-K5GtOy2o",
-    "accountId": "a6uM8cCe5QJxzGkCr4yv8y-4XxPcsziJQPwJ2veEAMZaISdx81wnGrkM",
-    "puuid": "f5h2A98oO77eb-4A4qY8kkxh0DHSolpb571597xXYCmpy9PhnXHxPrsoBIsQ32JBH2J-O8gp4xwRww",
-    "name": "석주윤",
-    "profileIconId": 3590,
-    "revisionDate": 1628272046000,
-    "summonerLevel": 357
-}
+    "id": "RfMTzYCQNktLvXVIyMWg9DsAjwajwwpXVL9h8Nao2wUfFfk",
+    "accountId": "iFAK9w4SzkTCpdvRwTf5aEbCTVCci8BCy5Y2iu9swTl1QZCuFmjtU8q-",
+    "puuid": "wyJ1Evp59ureSIMWjt5flBQkxBWBKopVrex1BVLR5o1hX6L9FtR_eqHUhPrBB80N_eju6Yu0bxKK_w",
+    "name": "글썽글썽태윤",
+    "profileIconId": 6,
+    "revisionDate": 1632805380000,
+    "summonerLevel": 178
 }
  */
 public class CUserDTO implements Serializable {

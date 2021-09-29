@@ -7,8 +7,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.capstona_a.data.CMatch;
 import com.example.capstona_a.data.CMatchDetailDTO;
 import com.example.capstona_a.data.CParticipant;
+import com.example.capstona_a.data.Participant;
 
 import java.util.ArrayList;
 
@@ -34,20 +36,21 @@ public class UserPhaseDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_phase_detail);
 
         Intent intent = getIntent();
-        CMatchDetailDTO dto = (CMatchDetailDTO) intent.getSerializableExtra("GameData");
-        dto.activateUsername();
-        ArrayList<CParticipant> redParticipants = new ArrayList<>();
-        ArrayList<CParticipant> blueParticipants = new ArrayList<>();
+        ArrayList<CMatch> matches = (ArrayList<CMatch>) intent.getSerializableExtra("GameData");
+        int position=(int)intent.getSerializableExtra("position");
+        CMatch dto=matches.get(position);
+        ArrayList<Participant> redParticipants = new ArrayList<>();
+        ArrayList<Participant> blueParticipants = new ArrayList<>();
         viewBinding();
         int k = 0;
         int j = 0;
         for (int i = 0; i < 10; i++) {
             CalgameInfo(dto,i);
-            if (dto.getParticipants().get(i).getTeamId() == 100) {
-                redParticipants.add(j, dto.getParticipants().get(i));
+            if (dto.getInfo().getParticipants().get(i).getTeamId() == 100) {
+                redParticipants.add(j, dto.getInfo().getParticipants().get(i));
                 j++;
             } else {
-                blueParticipants.add(k, dto.getParticipants().get(i));
+                blueParticipants.add(k, dto.getInfo().getParticipants().get(i));
                 k++;
             }
 
@@ -70,26 +73,27 @@ public class UserPhaseDetailActivity extends AppCompatActivity {
         firstTower=findViewById(R.id.textview_firsttower);
     }
 
-    private void CalgameInfo(CMatchDetailDTO dto,int i){
-        if(dto.getParticipants().get(i).getTeamId() == 100) {
-            if (dto.getParticipants().get(i).getStats().getWin())
+    private void CalgameInfo(CMatch dto,int i){
+        if(dto.getInfo().getParticipants().get(i).getTeamId() == 100) {
+            if (dto.getInfo().getParticipants().get(i).isWin())
                 winTeam_var = 100;
-            if (dto.getParticipants().get(i).getStats().getFirstTowerKill())
+
+            if (dto.getInfo().getParticipants().get(i).isFirstTowerKill())
                 firstTower_var = 100;
-            if (dto.getParticipants().get(i).getStats().getFirstBloodKill())
+            if (dto.getInfo().getParticipants().get(i).isFirstBloodKill())
                 firstBlood_var = 100;
-            redKA_var+=(dto.getParticipants().get(i).getStats().getKills().intValue()+dto.getParticipants().get(i).getStats().getAssists().intValue());
-            redD_var+=dto.getParticipants().get(i).getStats().getDeaths().intValue();
+            redKA_var+=(dto.getInfo().getParticipants().get(i).getKills()+dto.getInfo().getParticipants().get(i).getAssists());
+            redD_var+=dto.getInfo().getParticipants().get(i).getDeaths();
         }
-        else if(dto.getParticipants().get(i).getTeamId() == 200) {
-            if (dto.getParticipants().get(i).getStats().getWin())
+        else if(dto.getInfo().getParticipants().get(i).getTeamId() == 200) {
+            if (dto.getInfo().getParticipants().get(i).isWin())
                 winTeam_var = 200;
-            if (dto.getParticipants().get(i).getStats().getFirstTowerKill())
+            if (dto.getInfo().getParticipants().get(i).isFirstTowerKill())
                 firstTower_var = 200;
-            if (dto.getParticipants().get(i).getStats().getFirstBloodKill())
+            if (dto.getInfo().getParticipants().get(i).isFirstBloodKill())
                 firstBlood_var = 200;
-            blueKA_var+=(dto.getParticipants().get(i).getStats().getKills().intValue()+dto.getParticipants().get(i).getStats().getAssists().intValue());
-            blueD_var+=dto.getParticipants().get(i).getStats().getDeaths().intValue();
+            blueKA_var+=(dto.getInfo().getParticipants().get(i).getKills()+dto.getInfo().getParticipants().get(i).getAssists());
+            blueD_var+=dto.getInfo().getParticipants().get(i).getDeaths();
         }
     }
 

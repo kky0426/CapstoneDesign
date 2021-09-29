@@ -1,11 +1,13 @@
 package com.example.capstona_a;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,7 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.capstona_a.data.CMatch;
-import com.example.capstona_a.data.CMatchData;
+import com.example.capstona_a.data.CMatchV5;
+import com.example.capstona_a.data.CUserAPP;
 import com.example.capstona_a.data.CUserDTO;
 import com.example.capstona_a.data.CUserSetleagueEntryDTO;
 import com.example.capstona_a.data.CuserLeagueEntryDTO;
@@ -22,6 +25,9 @@ import com.example.capstona_a.data.Player;
 import com.example.capstona_a.retrofit.GetServerService;
 import com.example.capstona_a.retrofit.RetroBuild;
 import com.example.capstona_a.retrofit.RetroServerBuild;
+import com.example.capstona_a.retrofit.RetroV5Build;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -31,16 +37,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserPhaseActivity extends AppCompatActivity {
-
     private TextView textView_nameSummoner;
     private TextView textView_nameTier;
     private TextView textView_nameScore;
     private TextView textView_RecordGame;
     private TextView textView_winningPercentage;
     private TextView textView_kda;
-
     private Button btn;
-
     private ImageView img_summoner;
     private ImageView img_Tier;
     private ImageView img_loading;
@@ -57,24 +60,30 @@ public class UserPhaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_phase);
-
         // 뷰 바인딩
         viewBinding();
-
         //
         Intent intent = getIntent();
+        ArrayList<String> gameid=(ArrayList<String>)intent.getSerializableExtra("Matchlist");
+        Log.d("check",gameid.toString());
         CUserDTO user = (CUserDTO) intent.getSerializableExtra("user");
-
         // 뷰 세팅
         textView_nameSummoner.setText(user.getName());
         String profileImgSrc = Util.getProfileImgSrc(user.getProfileIconId());
         Glide.with(this).load(profileImgSrc).into(img_summoner);
         // Glide.with(this).asGif().diskCacheStrategy(DiskCacheStrategy.RESOURCE).load(R.drawable.poro2).into(img_loading);
-
+        Log.d("check", user.getPuuid());
         // Retrofit call
         String api_key = Util.API_KEY();
         league(user, api_key);
-        match(user, api_key);
+        final ArrayList<CMatchV5> v5Matchlist=new ArrayList<>();
+        final UserPhaseAdapter userPhaseAdapter = new UserPhaseAdapter(getApplicationContext(),matchList );
+        listView.setAdapter(userPhaseAdapter);
+        for(int i=0; i<10; i++){
+            match(gameid.get(i),api_key,user.getName(),userPhaseAdapter);
+        }
+
+
 
         //  KDA
         kda(user.getName());
@@ -142,16 +151,61 @@ public class UserPhaseActivity extends AppCompatActivity {
         });
     }
 
-    private void match(CUserDTO user, String api_key) {
-        Call<CMatchData> res2 = RetroBuild.getInstance().getService().getMatchId(user.getAccountId(), api_key);
+    private void match(String gameid, String api_key, String name, UserPhaseAdapter userPhaseAdapter) {
+        String gameId = gameid.replace("\"", "");
+        CMatch match= new CMatch();
+        Call<CMatchV5> res3 = RetroV5Build.getInstance().getService().getMatchData_v5(gameId, api_key);
+        res3.enqueue(new Callback<CMatchV5>() {
+            @Override
+            public void onResponse(Call<CMatchV5> call, Response<CMatchV5> response) {
+                if (response.body() == null) {
+                    //TODO 바뻐서 짐 못해
+                }
+                Log.d("matchv5 suc", response.body().getMetadata().getParticipants().toString());
+                CMatchV5 matchv5 = response.body();
+                matchv5.setUsername(name);
+                matchv5.activateplayerNum();
+                CMatch match=new CMatch();
+                match.setChampName(matchv5.getUsername());
+                Log.d("match check",match.getChampName());
+                match.setChampName(matchv5.getInfo().getParticipants().get(matchv5.getPlayernum()).getChampionName());
+                match.setLane(matchv5.getInfo().getParticipants().get(matchv5.getPlayernum()).getLane());
+                long duration = matchv5.getInfo().getGameDuration()/1000;
+                Log.d("duration0",String.valueOf(duration));
+                match.setGameDuration(duration);
+                match.setImgSrc(Util.getChampImgSrc(match.getChampName(), 0));
+                match.setInfo(matchv5.getInfo());
+                match.setPlayerNum(matchv5.getPlayernum());
+                matchList.add(match);
+                userPhaseAdapter.notifyDataSetChanged();
+                listView.setVisibility(View.VISIBLE);
 
-        res2.enqueue(new Callback<CMatchData>() {
+
+
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<CMatchV5> call, Throwable t) {
+                Log.d("ㅋㅋ망함", t.toString());
+            }
+        });
+    }
+
+
+
+        /*
+        Call<CMatchData> res3 = RetroV5Build.getInstance().getService().getMatchId(user.getPuuid(), api_key);
+        res3.enqueue(new Callback<CMatchData>() {
             @Override
             public void onResponse(@NonNull Call<CMatchData> call, @NonNull Response<CMatchData> response) {
                 Log.d("Retrofit CMatch success", response.toString());
                 CMatchData matchData = response.body();
                 if (matchData == null) {
-                    // TODO 만약 매칭 정보가 아예 없을 경우를 처리 해야함.
+                    Log.d("좃됨","ㅋㅋ");
+
                     Log.d("UserPhaseActivity", "메칭 정보가 없습니다." + user.getName());
                 } else {
                     for (int i = 0; i < MATCH_LENGTH; i++) {
@@ -174,15 +228,24 @@ public class UserPhaseActivity extends AppCompatActivity {
                     img_loading.setEnabled(false);
                 }
 
+
+
             }
 
             @Override
             public void onFailure(@NonNull Call<CMatchData> call, @NonNull Throwable t) {
+                Log.d("좃됨",t.toString());
             }
-        });
+        });*/
+
+
+
+    CMatch Changer(CMatch match,CMatchV5 matchv5){
+
+       return match;
     }
 
-    CuserLeagueEntryDTO getSoloRank(ArrayList<CuserLeagueEntryDTO> list) {
+    CuserLeagueEntryDTO getSoloRank(ArrayList<CuserLeagueEntryDTO>list){
         int i;
         for (i = 0; i < list.size(); i++) {
             if (list.get(i).getQueueType().equals("RANKED_SOLO_5x5")) {

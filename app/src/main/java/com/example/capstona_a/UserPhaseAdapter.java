@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.example.capstona_a.data.CMatch;
 import com.example.capstona_a.data.CMatchDetailDTO;
+import com.example.capstona_a.data.CMatchV5;
 import com.example.capstona_a.retrofit.RetroMatchBuild;
 
 import java.io.IOException;
@@ -81,7 +83,57 @@ public class UserPhaseAdapter extends BaseAdapter {
 
         // Retrofit 요청
         convertView.setVisibility(View.INVISIBLE);
+        Long kill= cMatch.get(position).getInfo().getParticipants().get(cMatch.get(position).getPlayerNum()).getKills();
+        Long death =cMatch.get(position).getInfo().getParticipants().get(cMatch.get(position).getPlayerNum()).getDeaths();
+        Long assist =cMatch.get(position).getInfo().getParticipants().get(cMatch.get(position).getPlayerNum()).getAssists();
+
+        String k_d_a = kill + "/" + death + "/" + assist;
+        String aver = myContext.getString(R.string.f_2, ((float) (kill + assist)) / death);
+
+        currentVH.kda.setText(k_d_a);
+        currentVH.average.setText(myContext.getString(R.string.string_with_bracket, aver));
+        currentVH.gameDuration.setText(myContext.getString(R.string.minute_second_dd, cMatch.get(position).getInfo().getGameDuration()/60000 ,((cMatch.get(position).getInfo().getGameDuration() % 60000)/1000)));
+
+
+        Long item_0 = cMatch.get(position).getInfo().getParticipants().get(cMatch.get(position).getPlayerNum()).getItem0();
+        Long item_1 = cMatch.get(position).getInfo().getParticipants().get(cMatch.get(position).getPlayerNum()).getItem1();
+        Long item_2 = cMatch.get(position).getInfo().getParticipants().get(cMatch.get(position).getPlayerNum()).getItem2();
+        Long item_3 = cMatch.get(position).getInfo().getParticipants().get(cMatch.get(position).getPlayerNum()).getItem3();
+        Long item_4 = cMatch.get(position).getInfo().getParticipants().get(cMatch.get(position).getPlayerNum()).getItem4();
+        Long item_5 = cMatch.get(position).getInfo().getParticipants().get(cMatch.get(position).getPlayerNum()).getItem5();
+        if (item_0 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_0)).into(currentVH.item0);
+        }
+        if (item_1 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_1)).into(currentVH.item1);
+        }
+        if (item_2 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_2)).into(currentVH.item2);
+        }
+        if (item_3 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_3)).into(currentVH.item3);
+        }
+        if (item_4 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_4)).into(currentVH.item4);
+        }
+        if (item_5 != 0) {
+            Glide.with(myContext).load(Util.getItemImgSrc(item_5)).into(currentVH.item5);
+        }
+        Glide.with(myContext).load(cMatch.get(position).getImgSrc()).circleCrop().into(currentVH.champImg);
+        convertView.setVisibility(View.VISIBLE);
+        currentVH.btn.setOnClickListener(view->{
+            Intent intent = new Intent(view.getContext(), UserPhaseDetailActivity.class);
+            intent.putExtra("GameData", cMatch);
+            intent.putExtra("position",position);
+            view.getContext().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+
+        });
+        //set(cMatch.get(position),currentVH);
+        /*
         matchDetail(currentVH, position, convertView);
+
+         */
         return convertView;
     }
 
@@ -116,6 +168,7 @@ public class UserPhaseAdapter extends BaseAdapter {
         }
     }
 */
+
     private void matchDetail(UserPhaseViewHolder currentVH, int position, View v) {
         if (dtos[position] != null) {
             // View 세팅
@@ -166,6 +219,27 @@ public class UserPhaseAdapter extends BaseAdapter {
         }
     }
 
+
+/*
+    private void set(CMatchV5 match,UserPhaseViewHolder vh){
+        match.activateplayerNum();
+        int playerNum=match.getPlayernum();
+        Long kill= match.getInfo().getParticipants().get(playerNum).getKills();
+        Long death = match.getInfo().getParticipants().get(playerNum).getDeaths();
+        Long assist =match.getInfo().getParticipants().get(playerNum).getAssists();
+        String k_d_a = kill + "/" + death + "/" + assist;
+        String aver = myContext.getString(R.string.f_2, ((float) (kill + assist)) / death);
+        vh.kda.setText(k_d_a);
+        vh.average.setText(myContext.getString(R.string.string_with_bracket, aver));
+        vh.gameDuration.setText(myContext.getString(R.string.minute_second_dd, match.getInfo().getGameDuration() / 60, match.getInfo().getGameDuration() % 60));
+
+    }
+
+
+}
+
+ */
+
     private void set(CMatchDetailDTO dto, UserPhaseViewHolder vh, int position) {
 
         dto.activatePlayerNum(cMatch.get(position).getName());
@@ -211,6 +285,8 @@ public class UserPhaseAdapter extends BaseAdapter {
         Glide.with(myContext).load(cMatch.get(position).getImgSrc()).circleCrop().into(vh.champImg);
     }
 }
+
+
 
 /*
     findViewById() 의 호출을 줄이기 위한 View 바인 들의 모음
