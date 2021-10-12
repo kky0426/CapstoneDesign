@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Capstona_a</string>
+    <string name="see_ingame_win_rate">인게임 승률 보기</string>
+    <string name="compare_ingame_stats">인게임 내 스텟비교</string>
+    <string name="champion">챔피언</string>
+    <string name="spell">스펠</string>
+    <string name="name_and_tier">이름 및 티어</string>
+    <string name="win_rate">승률</string>
+    <string name="please_enter_your_id">아이디를 입력하세요</string>
+    <string name="search">검색</string>
+    <string name="ingame_profile_img">인게임 프로필 이미지</string>
+    <string name="etc">기타</string>
+    <string name="user_phase_profile_img">유저 페이즈 프로필 이미지</string>
+    <string name="user_phase_tier_img">유저 페이즈 티어 이미지</string>
+    <string name="ingame_inf">인게임 정보</string>
+    <string name="recent_game_record">최근 게임 전적</string>
+    <string name="user_phase_single_champion_img">유저 페이즈 싱글 챔피언 이미지</string>
+    <string name="user_phase_item_img">유저 페이즈 아이템 이미지</string>
+    <string name="user_phase_loading_img">유저 페이즈 로딩 이미지</string>
+
+    <string name="with_space_ss">%s %s</string>
+    <string name="score_before_d">점수: %d</string>
+    <string name="win_lose_score_dd">승: %d\n패: %d</string>
+    <string name="win_late_f">승률: %.2f%%</string>
+    <string name="f_2">%.2f</string>
+    <string name="minute_second_dd">%d분 %d초</string>
+    <string name="string_with_bracket">(%s)</string>
+    <string name="summoner_spell">서머너 스펠</string>
+    <string name="detail_info">상세 정보</string>
+    <string name="kda">%.1f/%.1f/%.1f</string>
 </resources>

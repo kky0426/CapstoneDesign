@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UserPhaseDetailActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/all_border"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@+id/listview_blue_team"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#44166592"
+            tools:listitem="@layout/listview_user_phase_detail_single" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/all_border_ff"
+                android:gravity="center"
+                android:text="승리팀"
+                android:textColor="#442B2E"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textview_winteam"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/all_border_ff"
+                android:gravity="center"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/all_border_ff"
+                android:gravity="center"
+                android:text="KDA (Avg)"
+                android:textColor="#442B2E"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/KDA_blue_team"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@drawable/all_border_ff"
+                android:gravity="center"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/KDA_red_team"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@drawable/all_border_ff"
+                android:gravity="center"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview_firstblood"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/all_border_ff"
+                android:gravity="center"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textview_firsttower"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/all_border_ff"
+                android:gravity="center"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <ListView
+            android:id="@+id/listview_red_team"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#4489140E" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

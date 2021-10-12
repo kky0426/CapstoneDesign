@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.capstona_a">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="Capstone"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:name=".data.CUserAPP"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher_lml"
+        android:label="에레멜"
+        android:roundIcon="@mipmap/ic_launcher_lml_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Capstona_a"
-        android:name=".CMatchData_a">
-        <activity android:name=".IngameActivity"></activity>
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".NotIngameActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
+        <activity
+            android:name=".IngameRateActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
+        <activity
+            android:name=".BoardActivity"
+            android:exported="true" />
+        <activity android:name=".UserPhaseDetailActivity" />
+        <activity
+            android:name=".IngameActivity"/>
         <activity android:name=".UserPhaseActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

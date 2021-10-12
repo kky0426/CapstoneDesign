@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <ImageView
+        android:id="@+id/img_ingame_champ"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/summoner_spell"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/tryndamere" />
+
+    <TableLayout
+        android:id="@+id/table_ingame"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/img_ingame_champ"
+        app:layout_constraintStart_toEndOf="@id/img_ingame_champ"
+        app:layout_constraintTop_toTopOf="@id/img_ingame_champ">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_ingame_spell1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="3dp"
+                android:contentDescription="@string/summoner_spell"
+                tools:src="@drawable/summoner_flash" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_ingame_spell2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="3dp"
+                android:contentDescription="@string/summoner_spell"
+                tools:src="@drawable/summoner_flash" />
+
+
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/tv_ingame_name"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textColor="#442B2E"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/table_ingame"
+        app:layout_constraintTop_toTopOf="@id/table_ingame"
+        tools:text="나는야 킹갓엠퍼럴골드" />
+
+    <ImageView
+        android:id="@+id/img_ingame_tier"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/summoner_spell"
+        app:layout_constraintBottom_toBottomOf="@+id/table_ingame"
+        app:layout_constraintStart_toEndOf="@+id/table_ingame"
+        tools:src="@drawable/emblem_gold" />
+
+    <TextView
+        android:id="@+id/tv_ingame_tier"
+        android:layout_width="95dp"
+        android:layout_height="25dp"
+        android:gravity="center_vertical"
+        android:textColor="#442B2E"
+        app:layout_constraintBottom_toBottomOf="@+id/img_ingame_tier"
+        app:layout_constraintStart_toEndOf="@+id/img_ingame_tier"
+        tools:text="G2 (2LP)" />
+
+    <FrameLayout
+        android:id="@+id/fl_ingame"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_ingame_tier"
+        app:layout_constraintStart_toEndOf="@+id/tv_ingame_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_ingame_name">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_ingame_win_losses"
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:gravity="center_horizontal|bottom"
+                android:textColor="#99442B2E"
+                android:textSize="13sp"
+                tools:text="2588" />
+
+            <TextView
+                android:id="@+id/tv_ingame_win_rate"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:gravity="center_horizontal|top"
+                android:textColor="#442B2E"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="65%" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <TableLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fl_ingame"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/ingame_kda"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:ellipsize="start"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:textColor="#442B2E"
+                android:textSize="12sp"
+                tools:text="KDA 12.6/12.6/12.6" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/ingame_damage_dealt"
+                android:layout_width="0dp"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:textColor="#442B2E"
+                tools:text="칸 1" />
+
+            <TextView
+                android:id="@+id/ingame_damage_taken"
+                android:layout_width="0dp"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:textColor="#442B2E"
+                tools:text="칸 2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/ingame_gold"
+                android:layout_width="0dp"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:textColor="#442B2E"
+                tools:text="칸 1" />
+
+            <TextView
+                android:id="@+id/ingame_vision"
+                android:layout_width="0dp"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:textColor="#442B2E"
+                tools:text="칸 2" />
+
+            <TextView
+                android:id="@+id/ingame_exp"
+                android:layout_width="0dp"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:textColor="#442B2E"
+                tools:text="칸 3" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_match_record_detail"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                tools:text="더 보기" />
+        </TableRow>
+
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

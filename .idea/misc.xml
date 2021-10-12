@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/drawable/round_border.xml" value="0.38229166666666664" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_board.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_ingame_rate.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_not_ingame.xml" value="0.25" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_user_phase.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/activity_user_phase_detail.xml" value="0.25" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/board_detail.xml" value="0.33" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/listview_ingame_single.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/listview_user_phase_detail_single.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndrodiStudioProject/CapstoneDesign/app/src/main/res/layout/listview_user_phase_single.xml" value="0.33" />
+        <entry key="..\:/Android/Projects/CapstoneDesign/app/src/main/res/layout/activity_board.xml" value="0.1" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_user_phase.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/activity_user_phase_detail.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/CapstoneDesign/app/src/main/res/layout/listview_ingame_single.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_board.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.2" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_ingame_rate.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_not_ingame.xml" value="0.23822463768115942" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/activity_user_phase_detail.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/board_detail.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/listview_ingame_single.xml" value="0.33" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/listview_user_phase_detail_single.xml" value="0.2046875" />
+        <entry key="..\:/DATA/Desktop/NewCapstoneDesign/app/src/main/res/layout/listview_user_phase_single.xml" value="0.2046875" />
+        <entry key="..\:/Users/Muleo/Desktop/CapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_ingame.xml" value="0.12182971014492754" />
+        <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_main.xml" value="0.12182971014492754" />
+        <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_user_phase.xml" value="0.13043478260869565" />
+        <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/activity_userphase_detail.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/listview_ingame_single.xml" value="0.11277173913043478" />
+        <entry key="..\:/Users/wntjr/StudioProjects/CapstoneDesign/app/src/main/res/layout/listview_userphase_single.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
